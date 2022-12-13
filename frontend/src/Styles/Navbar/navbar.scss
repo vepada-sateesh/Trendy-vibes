@@ -1,0 +1,41 @@
+@import "config";
+
+.upper_nav {
+  @include flex($align: center, $justify: space-between);
+  height: 60px;
+  background-color: $grey-color;
+  padding: 0 20px;
+  > div {
+    @include flex($align: center, $justify: center);
+  }
+  svg {
+    color: $pink-color;
+    margin: 0 5px;
+  }
+  .text-section {
+    svg {
+      margin: 0;
+      transform: rotate(15deg);
+    }
+    span {
+      margin: 0 5px;
+    }
+  }
+}
+
+.header_saparator {
+  margin: 0 10px;
+}
+
+.features_nav {
+  @include flex($align: center, $justify: space-between);
+  padding: 0 20px;
+  .search_bar_box > input {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid gray;
+  }
+  .cart_wishlist_wrapper {
+    @include flex($align: center, $justify: space-between);
+  }
+}
