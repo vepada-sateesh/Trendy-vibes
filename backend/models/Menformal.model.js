@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+
 const menformalSchema = mongoose.Schema({
   cutoffPrice: { type: String, required: false },
   price: { type: String, required: false },
@@ -18,5 +19,6 @@ const menformalSchema = mongoose.Schema({
 });
 
 const Menformal = mongoose.model("menformal", menformalSchema);
+
 
 module.exports = Menformal;

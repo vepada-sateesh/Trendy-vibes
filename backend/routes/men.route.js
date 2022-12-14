@@ -1,6 +1,5 @@
 const express = require("express");
 
-
 const Mentshirt = require("../models/Mentshirt.model")
 const Mencasual = require("../models/Mencasual.model");
 const Menformal = require("../models/Menformal.model");
@@ -48,5 +47,6 @@ menRouter.get("/casual", async (req, res) => {
         res.status(500).send({message:"Something went wrong somewhere"})
     }
 });
+
 
 module.exports = menRouter;
