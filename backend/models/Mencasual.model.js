@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-
 const mencasualSchema = mongoose.Schema({
   cutoffPrice: { type: String, required: false },
   price: { type: String, required: false },
@@ -20,5 +19,4 @@ const mencasualSchema = mongoose.Schema({
 
 const Mencasual = mongoose.model("mencausal", mencasualSchema);
 
-
-module.exports = Mencasual;
+module.exports = {Mencasual};

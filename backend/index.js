@@ -1,12 +1,11 @@
 const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
+
 const {Auth} = require("./middlewares/Authonticate")
 const {connection} = require("./config/database");
 const {userRouter} = require("./routes/user.route");
-
-
-const menRouter = require("./routes/men.route");
+const {menRouter} = require("./routes/men.route");
 
 
 const app = express();
@@ -23,7 +22,8 @@ app.get("/",(req,res)=>{
 app.use("/user",userRouter);
 app.use(Auth)
 
-server.use("/men",menRouter);
+app.use("/men",menRouter);
+
 
 
 

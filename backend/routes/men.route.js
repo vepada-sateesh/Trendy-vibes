@@ -1,8 +1,8 @@
 const express = require("express");
 
-const Mentshirt = require("../models/Mentshirt.model")
-const Mencasual = require("../models/Mencasual.model");
-const Menformal = require("../models/Menformal.model");
+const {Mentshirt} = require("../models/Mentshirt.model")
+const {Mencasual} = require("../models/Mencasual.model");
+const {Menformal} = require("../models/Menformal.model");
 
 const menRouter = express.Router();
 
@@ -48,5 +48,4 @@ menRouter.get("/casual", async (req, res) => {
     }
 });
 
-
-module.exports = menRouter;
+module.exports = {menRouter};
