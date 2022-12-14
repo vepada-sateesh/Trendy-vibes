@@ -6,6 +6,9 @@ const {connection} = require("./config/database");
 const {userRouter} = require("./routes/user.route");
 
 
+const menRouter = require("./routes/men.route");
+
+
 const app = express();
 app.use(cors({
     origin:"*"
@@ -19,6 +22,8 @@ app.get("/",(req,res)=>{
 
 app.use("/user",userRouter);
 app.use(Auth)
+
+server.use("/men",menRouter);
 
 
 
