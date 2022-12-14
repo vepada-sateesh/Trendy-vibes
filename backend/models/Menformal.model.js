@@ -19,4 +19,4 @@ const menformalSchema = mongoose.Schema({
 
 const Menformal = mongoose.model("menformal", menformalSchema);
 
-module.exports = Menformal;
+module.exports = {Menformal};

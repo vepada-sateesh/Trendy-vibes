@@ -19,4 +19,4 @@ const mencasualSchema = mongoose.Schema({
 
 const Mencasual = mongoose.model("mencausal", mencasualSchema);
 
-module.exports = Mencasual;
+module.exports = {Mencasual};

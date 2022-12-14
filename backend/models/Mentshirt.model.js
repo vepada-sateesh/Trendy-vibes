@@ -21,4 +21,4 @@ const mentshirtSchema = mongoose.Schema({
 
 const Mentshirt = mongoose.model("mentshirt",mentshirtSchema);
 
-module.exports = Mentshirt;
+module.exports = {Mentshirt};
