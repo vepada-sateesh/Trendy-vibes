@@ -4,6 +4,7 @@ const cors = require("cors");
 
 const connection = require("./config/database");
 const userRouter = require("./routes/user.route");
+const menRouter = require("./routes/men.route");
 
 
 const server = express();
@@ -16,6 +17,8 @@ server.get("/",(req,res)=>{
 
 
 server.use("/user",userRouter);
+
+server.use("/men",menRouter);
 
 
 
