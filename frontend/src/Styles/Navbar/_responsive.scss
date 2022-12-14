@@ -1,0 +1,50 @@
+@include media-sm {
+}
+
+@include media-md {
+  .features_nav {
+    background-color: $grey-color;
+    grid-template-areas: "logo search cart";
+    > .search_bar_box > {
+      justify-self: end;
+      & input {
+        background-color: $grey-color;
+      }
+    }
+    > .brand_logo_box {
+      // border: 1px solid black;
+      justify-self: center;
+      width: 60%;
+      > img {
+        width: 100%;
+      }
+    }
+    > .menu_button {
+      display: block;
+    }
+  }
+  .nav_catagories_wrapper {
+    display: none;
+  }
+  .side_menu {
+    > .catagory {
+      border: 1px solid black;
+      > span {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+@include media-lg {
+  .upper_nav {
+    background-color: white !important;
+    > div {
+      display: none;
+    }
+    .text-section {
+      display: block;
+      margin: auto;
+    }
+  }
+}

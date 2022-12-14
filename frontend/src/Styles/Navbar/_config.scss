@@ -13,18 +13,18 @@ $pink-color: #ed1e99;
   padding: 0;
 }
 
+@mixin media-sm {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}
 @mixin media-md {
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
     @content;
   }
 }
 @mixin media-lg {
-  @media screen and (min-width: 1024px) {
-    @content;
-  }
-}
-@mixin media-xl {
-  @media screen and (min-width: 1600px) {
+  @media screen and (max-width: 950px) {
     @content;
   }
 }
