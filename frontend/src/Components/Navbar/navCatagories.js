@@ -1,0 +1,431 @@
+export const navCatagories = [
+  // Mens Section
+  {
+    name: "Men",
+    link: "#",
+    sub_section: [
+      {
+        name: "Top Wear",
+        link: "#",
+        items: [
+          { name: "T-Shirts & Polos", link: "#" },
+          { name: "Casual Shirts", link: "#" },
+          { name: "Formal Shirts", link: "#" },
+          { name: "Sweetshirts", link: "#" },
+          { name: "Jackets", link: "#" },
+          { name: "Suits & Blazers", link: "#" },
+          { name: "Sweaters", link: "#" },
+        ],
+      },
+      {
+        name: "BottomWear",
+        link: "#",
+        items: [
+          { name: "Jeans", link: "#" },
+          { name: "Chinos", link: "#" },
+          { name: "Casual Trousers", link: "#" },
+          { name: "Formal Trousers", link: "#" },
+          { name: "Jhorts", link: "#" },
+          { name: "Track Pants", link: "#" },
+        ],
+      },
+      {
+        name: "FootWear",
+        link: "#",
+        items: [
+          { name: "Formal Shoes", link: "#" },
+          { name: "Casual Shoes", link: "#" },
+          { name: "Sneakers", link: "#" },
+          { name: "Loafers", link: "#" },
+          { name: "Sandals", link: "#" },
+          { name: "Flip Flops", link: "#" },
+        ],
+      },
+      {
+        name: "Accessories",
+        link: "#",
+        items: [
+          { name: "Caps & Hats", link: "#" },
+          { name: "Belts & Wallets", link: "#" },
+          { name: "Sunglasses & Watches", link: "#" },
+          { name: "Bags & Backpacks", link: "#" },
+          { name: "Fragrances", link: "#" },
+          { name: "Grooming & Personal Care", link: "#" },
+          { name: "Face Mask", link: "#" },
+          { name: "Deodorants", link: "#" },
+        ],
+      },
+      {
+        name: "InnerWear",
+        link: "#",
+        items: [
+          { name: "Briefs", link: "#" },
+          { name: "Trunks", link: "#" },
+          { name: "Vests", link: "#" },
+        ],
+      },
+      {
+        name: "Brands",
+        link: "#",
+        items: [
+          { name: "U.S. Polo Assn", link: "#" },
+          { name: "Calvin Clein", link: "#" },
+          { name: "Tommy Hilfiger", link: "#" },
+          { name: "Flying Machine", link: "#" },
+          { name: "Aeropostale", link: "#" },
+          { name: "Arrow", link: "#" },
+          { name: "Ruggers", link: "#" },
+        ],
+      },
+    ],
+  },
+  // Womens Section
+  {
+    name: "Women",
+    link: "#",
+    sub_section: [
+      {
+        name: "Top Wear",
+        link: "#",
+        items: [
+          { name: "T-Shirts & Tops", link: "#" },
+          { name: "Polo T-shirts", link: "#" },
+          { name: "Shirts", link: "#" },
+          { name: "Sweetshirts", link: "#" },
+          { name: "Jackets", link: "#" },
+          { name: "Sweaters", link: "#" },
+          { name: "Cardigans", link: "#" },
+          { name: "Shrugs", link: "#" },
+        ],
+      },
+      {
+        name: "BottomWear",
+        link: "#",
+        items: [
+          { name: "Jeans", link: "#" },
+          { name: "Chinos", link: "#" },
+          { name: "Leggings", link: "#" },
+          { name: "Joggers", link: "#" },
+          { name: "Trousers", link: "#" },
+          { name: "Shorts", link: "#" },
+          { name: "Track Pants", link: "#" },
+        ],
+      },
+      {
+        name: "FootWear",
+        link: "#",
+        items: [
+          { name: "Sandals", link: "#" },
+          { name: "Sneakers", link: "#" },
+          { name: "Belly Shoes", link: "#" },
+        ],
+      },
+      {
+        name: "Accessories",
+        link: "#",
+        items: [
+          { name: "Caps & Hats", link: "#" },
+          { name: "Belts & Wallets", link: "#" },
+          { name: "Sunglasses & Watches", link: "#" },
+          { name: "Bags & Backpacks", link: "#" },
+          { name: "Fragrances", link: "#" },
+          { name: "Grooming & Personal Care", link: "#" },
+          { name: "Face Mask", link: "#" },
+          { name: "Deodorants", link: "#" },
+        ],
+      },
+      {
+        name: "InnerWear",
+        link: "#",
+        items: [
+          { name: "Camisole", link: "#" },
+          { name: "Panties", link: "#" },
+          { name: "Bra", link: "#" },
+        ],
+      },
+      {
+        name: "Brands",
+        link: "#",
+        items: [
+          { name: "U.S. Polo Assn", link: "#" },
+          { name: "Calvin Clein", link: "#" },
+          { name: "Tommy Hilfiger", link: "#" },
+          { name: "Flying Machine", link: "#" },
+          { name: "Aeropostale", link: "#" },
+          { name: "Arrow", link: "#" },
+          { name: "Ruggers", link: "#" },
+        ],
+      },
+      {
+        name: "Ethnic Wear",
+        link: "#",
+        items: [
+          { name: "Kurtas", link: "#" },
+          { name: "Tunics", link: "#" },
+          { name: "Etnic Sets", link: "#" },
+          { name: "Ethnic Bottoms", link: "#" },
+          { name: "Plazzos", link: "#" },
+          { name: "Churidars", link: "#" },
+          { name: "Duppattas & Stoles", link: "#" },
+        ],
+      },
+    ],
+  },
+  // Kids Section
+  {
+    name: "Kids",
+    link: "#",
+    sub_section: [
+      {
+        name: "Boys Clothing",
+        link: "#",
+        items: [
+          { name: "T-Shirts & Polos", link: "#" },
+          { name: "Sweetshirts", link: "#" },
+          { name: "Jackets", link: "#" },
+          { name: "Shorts", link: "#" },
+          { name: "Pents", link: "#" },
+          { name: "Sweaters", link: "#" },
+        ],
+      },
+      {
+        name: "Girls Clothing",
+        link: "#",
+        items: [
+          { name: "T-Shirts & Tops", link: "#" },
+          { name: "Sweetshirts", link: "#" },
+          { name: "Jackets", link: "#" },
+          { name: "Shorts", link: "#" },
+          { name: "Pents", link: "#" },
+          { name: "Sweaters", link: "#" },
+          { name: "Leggings & Jeggings", link: "#" },
+        ],
+      },
+      {
+        name: "Infants",
+        link: "#",
+        items: [
+          { name: "Rompers", link: "#" },
+          { name: "T-Shirts", link: "#" },
+          { name: "Bodysuits", link: "#" },
+          { name: "Leggings", link: "#" },
+          { name: "Sweetshirts & Sweaters", link: "#" },
+          { name: "Sets", link: "#" },
+        ],
+      },
+      {
+        name: "Accessories",
+        link: "#",
+        items: [
+          { name: "Jewellery", link: "#" },
+          { name: "Belts & Wallets", link: "#" },
+          { name: "Sunglasses & Watches", link: "#" },
+          { name: "Bags & Backpacks", link: "#" },
+          { name: "Footwear", link: "#" },
+        ],
+      },
+      {
+        name: "Brands",
+        link: "#",
+        items: [
+          { name: "Regular Junior", link: "#" },
+          { name: "Suger Girl", link: "#" },
+          { name: "Tommy Hilfiger", link: "#" },
+          { name: "Flying Machine", link: "#" },
+          { name: "Aeropostale", link: "#" },
+          { name: "Arrow", link: "#" },
+          { name: "Ruggers", link: "#" },
+        ],
+      },
+    ],
+  },
+  //Brand Section
+  {
+    name: "Trendy Vibes",
+    link: "#",
+    sub_section: [
+      {
+        name: "Makeup",
+        link: "#",
+        items: [
+          { name: "Face", link: "#" },
+          { name: "Eye", link: "#" },
+          { name: "Lip", link: "#" },
+          { name: "Cheek", link: "#" },
+          { name: "Nails", link: "#" },
+          { name: "Tools & Brushes ", link: "#" },
+        ],
+      },
+      {
+        name: "Skincare",
+        link: "#",
+        items: [
+          { name: "Face", link: "#" },
+          { name: "Body", link: "#" },
+          { name: "Tools & Brushes", link: "#" },
+          { name: "Hand wash", link: "#" },
+        ],
+      },
+      {
+        name: "Fragrance",
+        link: "#",
+        items: [
+          { name: "For Men", link: "#" },
+          { name: "For Women", link: "#" },
+        ],
+      },
+      {
+        name: "Haircare",
+        link: "#",
+        items: [
+          { name: "Shampoo", link: "#" },
+          { name: "Conditioner", link: "#" },
+          { name: "Hair Styling", link: "#" },
+          { name: "Hair Treatment", link: "#" },
+        ],
+      },
+      {
+        name: "Bath & Body",
+        link: "#",
+        items: [
+          { name: "Bath & Showeer", link: "#" },
+          { name: "Lotion & Creams", link: "#" },
+        ],
+      },
+      {
+        name: "Tools & Brushes",
+        link: "#",
+        items: [
+          { name: "Skincare", link: "#" },
+          { name: "Makeup Brushes & Applicators", link: "#" },
+          { name: "Accessories", link: "#" },
+        ],
+      },
+    ],
+  },
+  //Online Exclusives Section
+  {
+    name: "Online Exclusives",
+    link: "#",
+    sub_section: [],
+  },
+  //Footwear
+  {
+    name: "Footwear",
+    link: "#",
+    sub_section: [
+      {
+        name: "Men",
+        link: "#",
+        items: [
+          { name: "Sneakers", link: "#" },
+          { name: "Casual Shoes", link: "#" },
+          { name: "Formal Shoes", link: "#" },
+          { name: "Loafers", link: "#" },
+          { name: "Sandals", link: "#" },
+          { name: "Flip Flops", link: "#" },
+        ],
+      },
+      {
+        name: "Women",
+        link: "#",
+        items: [
+          { name: "Sandlas", link: "#" },
+          { name: "Sneakers", link: "#" },
+          { name: "Belly Shoes", link: "#" },
+        ],
+      },
+      {
+        name: "Kids",
+        link: "#",
+        items: [],
+      },
+      {
+        name: "Top Footwear Brands",
+        link: "#",
+        items: [
+          { name: "Cole Haan", link: "#" },
+          { name: "Tommy Hilfiger", link: "#" },
+          { name: "Calvin Klein", link: "#" },
+          { name: "U.S Polo Assn", link: "#" },
+          { name: "Arrow", link: "#" },
+          { name: "Flying Machine", link: "#" },
+          { name: "Ruggers", link: "#" },
+          { name: "Sugr", link: "#" },
+        ],
+      },
+    ],
+  },
+  //Brands
+  {
+    name: "Brands",
+    link: "#",
+    sub_section: [
+      {
+        name: "Top Apparel Brands",
+        link: "#",
+        items: [
+          { name: "Arrow", link: "#" },
+          { name: "U.S Polo Assn", link: "#" },
+          { name: "Calvin Klein", link: "#" },
+          { name: "Tommy Hilfiger", link: "#" },
+          { name: "Flying Machine", link: "#" },
+          { name: "Aeropostale", link: "#" },
+          { name: "Colt", link: "#" },
+          { name: "Fuggers", link: "#" },
+          { name: "Anahi", link: "#" },
+        ],
+      },
+      {
+        name: "Top Beauty Brands",
+        link: "#",
+        items: [
+          { name: "Trendy Vibes Collection", link: "#" },
+          { name: "Pixi", link: "#" },
+          { name: "Benefit Cosmetic", link: "#" },
+          { name: "Clinique", link: "#" },
+          { name: "Elizabeth Arden", link: "#" },
+          { name: "Tom Ford", link: "#" },
+          { name: "Anastasia Beverly Hill", link: "#" },
+          { name: "Estee Lauder", link: "#" },
+          { name: "Huda Beauty", link: "#" },
+          { name: "Make Up for Ever", link: "#" },
+          { name: "Bobbi Brown", link: "#" },
+          { name: "Foreo", link: "#" },
+          { name: "Guerlain", link: "#" },
+        ],
+      },
+      {
+        name: "Top FootWear Brands",
+        link: "#",
+        items: [
+          { name: "Cole Haan", link: "#" },
+          { name: "Tommy Hilfiger", link: "#" },
+          { name: "Calvin Klein", link: "#" },
+          { name: "U.S Polo Assn", link: "#" },
+          { name: "Arrow", link: "#" },
+          { name: "Flying Machine", link: "#" },
+        ],
+      },
+      {
+        name: "All Brands",
+        link: "#",
+        items: [
+          { name: "U.S. Polo Assn", link: "#" },
+          { name: "Calvin Klein", link: "#" },
+          { name: "Tommy Hilfiger", link: "#" },
+          { name: "Flying Machine", link: "#" },
+          { name: "Aeropostale", link: "#" },
+          { name: "Arrow", link: "#" },
+          { name: "AD by Arvind", link: "#" },
+          { name: "Shffl", link: "#" },
+          { name: "Donuts", link: "#" },
+          { name: "Sugr", link: "#" },
+          { name: "Ruggers", link: "#" },
+          { name: "Karigari", link: "#" },
+          { name: "Anahi", link: "#" },
+        ],
+      },
+    ],
+  },
+];
