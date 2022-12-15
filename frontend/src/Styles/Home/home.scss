@@ -1,0 +1,147 @@
+@import "config";
+::-webkit-scrollbar {
+  display: none;
+}
+
+.catagory_slider {
+  width: 100%;
+  margin: 20px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: none;
+  > div {
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+    width: 80px;
+    > img {
+      height: 80px;
+      width: 80px;
+    }
+  }
+}
+
+.banner_image {
+  width: 95%;
+  margin: 20px auto;
+  > img {
+    width: 100%;
+  }
+}
+
+.sliding_offer_wrapper {
+  display: flex;
+  justify-content: center;
+  .image_slider {
+    width: 70%-2.5%;
+    // display: inline-block;
+    position: relative;
+    overflow: hidden;
+    > .image_wrapper {
+      display: flex;
+      transition: 500ms linear;
+      > img {
+        width: 100%;
+      }
+    }
+    > .image_slider_button {
+      position: absolute;
+      display: flex;
+      justify-content: space-between;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transform: translateY(50%);
+      display: none;
+      > svg {
+        font-size: 30px;
+        color: white;
+      }
+    }
+    &:hover .image_slider_button {
+      display: flex;
+    }
+    > .image_slider_indicator {
+      display: flex;
+      justify-content: space-around;
+      width: 150px;
+      margin: auto;
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      > div {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        border: 1px solid black;
+      }
+      > div.active_image_slider_indicator {
+        background-color: black;
+      }
+    }
+  }
+  .quick_links_offer {
+    width: 100%-70%-2.5%;
+    // border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    > .offer_image {
+      width: 100%;
+      > img {
+        width: 100%;
+      }
+    }
+    > .offer_list {
+      li {
+        list-style: none;
+        font-size: 14px;
+      }
+      > h2 {
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+.image_header {
+  margin: 20px 0;
+  > img {
+    width: 100%;
+  }
+}
+
+.coupon_box {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 95%;
+  margin: auto;
+  > div {
+    > img {
+      width: 100%;
+    }
+  }
+}
+
+.price_store {
+  > .catagory_slider {
+    display: flex;
+    width: 740px;
+    margin: auto;
+    > div {
+      width: 180px;
+      height: 180px;
+      > img {
+        width: 180px;
+        height: 180px;
+      }
+    }
+  }
+}
+
+@import "responsive";

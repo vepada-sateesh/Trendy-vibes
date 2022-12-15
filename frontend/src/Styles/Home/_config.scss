@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin media-sm {
+  @media screen and (max-width: 570px) {
+    @content;
+  }
+}
+@mixin media-md {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin media-lg {
+  @media screen and (max-width: 950px) {
+    @content;
+  }
+}
