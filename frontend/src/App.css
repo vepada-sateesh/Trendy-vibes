@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+/* ------- signup/login ------ */
+.login_or {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.loginBottam {
+  font-size: 12px;
+  text-align: center;
+}
+
+.loginBottam > span {
+  font-size: 12px;
+  border-bottom: 1px solid #ec008c;
+  color: #ec008c;
+  cursor: pointer;
+}
+
+.span {
+  border-bottom: 1px solid #ec008c;
+  color: #ec008c;
+  cursor: pointer;
+}
