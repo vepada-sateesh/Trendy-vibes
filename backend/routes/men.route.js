@@ -17,12 +17,13 @@ let tshirtBrand = [
 
 menRouter.get("/tshirt", async (req, res) => {
   let brand = req.query.brand || tshirtBrand;
+  let discount = req.query.discount || 0;
   if (req.query.brand) {
     brand = JSON.parse(brand);
   }
 
   try {
-    let data = await Mentshirt.find()
+    let data = await Mentshirt.find({$and:[{discount : {$gte:discount}}]})
       .where("brand")
       .in([...brand]);
 
@@ -45,8 +46,13 @@ let formalBrand = [
 
 menRouter.get("/formal", async (req, res) => {
   let brand = req.query.brand || formalBrand;
+  let discount = req.query.discount || 0;
+  console.log(typeof discount);
   if (req.query.brand) {
     brand = JSON.parse(brand);
+  }
+  if(req.query.discount){
+    discount = Number(discount);
   }
   try {
     let data = await Menformal.find()
@@ -68,11 +74,14 @@ let casualBrand = [
 
 menRouter.get("/casual", async (req, res) => {
   let brand = req.query.brand || casualBrand;
+  let discount = req.query.discount || 0;
   if (req.query.brand) {
     brand = JSON.parse(brand);
   }
   try {
-    let data = await Mencasual.find().where("brand").in([...brand]);
+    let data = await Mencasual.find()
+      .where("brand")
+      .in([...brand]);
     res.status(200).send({ total:data.length,mencasual: data });
   } catch (err) {
     res.status(500).send({ message: "Something went wrong somewhere" });
