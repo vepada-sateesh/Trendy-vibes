@@ -2,27 +2,35 @@ const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
 
-const connection = require("./config/database");
-const userRouter = require("./routes/user.route");
+const {Auth} = require("./middlewares/Authonticate")
+const {connection} = require("./config/database");
+const {userRouter} = require("./routes/user.route");
+const {menRouter} = require("./routes/men.route");
 
 
-const server = express();
-server.use(cors())
-server.use(express.json())
+const app = express();
+app.use(cors({
+    origin:"*"
+}))
+app.use(express.json())
 
-server.get("/",(req,res)=>{
-    res.status(200).send({message:"Sephora Homepage API"})
+app.get("/",(req,res)=>{
+    res.status(200).send({message:"welcome to trendy vibes testing Homepage API"})
 })
 
 
-server.use("/user",userRouter);
+app.use("/user",userRouter);
+app.use(Auth)
+
+app.use("/men",menRouter);
 
 
 
 
-server.listen(process.env.PORT, async()=>{
+app.listen(process.env.PORT, async()=>{
 
-    try{
+    try {
+        await connection
         console.log("db is connected successfully");
     }
     catch(err){
