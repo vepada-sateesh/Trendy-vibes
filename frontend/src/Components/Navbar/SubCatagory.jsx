@@ -6,10 +6,16 @@ const SubCatagory = (section) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <div onClick={() => setIsOpen(!isOpen)}>{section.name}</div>
+      <div className="sub_catagory" onClick={() => setIsOpen(!isOpen)}>
+        {section.name}
+      </div>
       {isOpen &&
         section?.items.map((items, id) => {
-          <div key={id}>{items.name}</div>;
+          return (
+            <div className="sub_catagory_item" key={id}>
+              {items.name}
+            </div>
+          );
         })}
     </>
   );
