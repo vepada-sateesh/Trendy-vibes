@@ -8,7 +8,7 @@ function ProductImage(){
 <Box w={{base:"full", md:"400px", lg:"400px"}} p="5" ml="auto" cursor={"zoom-in"} overflow="hidden"  _hover={{ boxShadow:"2xl"}} >
 
 <ReactImageZoom {...props} />
- 
+    {/* <Image h="400px" src="https://cdn16.nnnow.com/web-images/large/styles/O47AOWZ5N10/1650696376774/1.jpg" /> */}
     </Box>
     </>)
 }
