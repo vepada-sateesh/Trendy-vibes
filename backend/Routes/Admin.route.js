@@ -1,54 +1,3 @@
-// const express = require("express");
-// const { AdminModel } = require("../Models/Admin.model");
-// const adminRouter = express.Router();
-// const jwt = require("jsonwebtoken");
-// const bcrypt = require("bcrypt");
-
-// adminRouter.post("/signup", async (req, res) => {
-//   const { email, password } = req.body;
-//   const userPresent = await AdminModel.findOne({ email });
-//   if (userPresent?.email) {
-//     res.send("Try loggin in, already exist");
-//   } else {
-//     try {
-//       bcrypt.hash(password, 4, async function (err, hash) {
-//         const user = new AdminModel({ email, password: hash });
-//         await user.save();
-//         res.send("Sign up successfull");
-//       });
-//     } catch (err) {
-//       console.log(err);
-//       res.send("Something went wrong, pls try again later");
-//     }
-//   }
-// });
-
-// adminRouter.post("/login", async (req, res) => {
-//   const { email, password } = req.body;
-//   try {
-//     const user = await AdminModel.find({ email });
-
-//     if (user.length > 0) {
-//       const hashed_password = user[0].password;
-//       bcrypt.compare(password, hashed_password, function (err, result) {
-//         if (result) {
-//           const token = jwt.sign({ userID: user[0]._id }, "hush");
-//           res.send({ msg: "Login successfull", token: token });
-//         } else {
-//           res.send("Login failed");
-//         }
-//       });
-//     } else {
-//       res.send("Login failed");
-//     }
-//   } catch {
-//     res.send("Something went wrong, please try again later");
-//   }
-// });
-
-// module.exports = { adminRouter };
-
-
 
 const AdminBro = require("admin-bro");
 const AdminBroExpress = require("admin-bro-expressjs");
@@ -82,3 +31,46 @@ const router = AdminBroExpress.buildAuthenticatedRouter(adminBro, {
 });
 
 module.exports = router;
+
+
+
+
+// require("dotenv").config();
+// const cors = require("cors");
+// const express = require("express");
+// require("express-async-errors");
+// const bodyParser = require("body-parser");
+
+// const { connection } = require("../config/database");
+// const { productRouter } = require("../Routes/Product.route");
+// const router = require("../Routes/Admin.route");
+
+// const PORT = process.env.PORT;
+// const app = express();
+
+// app.use(
+//   cors({
+//     origin: "*",
+//   })
+// );
+// app.use(express.json());
+
+// app.use("/product", productRouter);
+
+// app.use(bodyParser.json());
+// app.use("/admin", router);
+
+// app.get("/", (req, res) => {
+//   res.send("Welcome...");
+// });
+
+// app.listen(PORT, async () => {
+//   try {
+//     await connection;
+//     console.log("Connect To DB Successfully");
+//   } catch (err) {
+//     console.log(err);
+//     res.send(404).json({ msg: "Something went wrong " });
+//   }
+//   console.log(`Listing on port ${PORT}`);
+// });
