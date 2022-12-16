@@ -1,5 +1,5 @@
 import { ChakraProvider } from '@chakra-ui/react'
-import {Flex, Stack, HStack, VStack, Box } from '@chakra-ui/react'
+import { Flex, Stack, HStack, VStack, Box } from '@chakra-ui/react'
 import Filters from '../Components/Products/Filters'
 import ProductsGrid from '../Components/Products/ProductsGrid'
 import Sort from '../Components/Products/Sort'
