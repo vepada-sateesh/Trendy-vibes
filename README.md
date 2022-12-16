@@ -4,7 +4,7 @@
 
 ## Landing Page- Debabrata Datta;
 
-## Login & Signup Page- Jayprakash;
+## Login & Signup Page- Jay Prakash;
 
 ## Products Page & Single Product Page - Mukul;
 

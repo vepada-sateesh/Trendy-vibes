@@ -1,0 +1,78 @@
+@include media-sm {
+  .text-section {
+    font-size: 12px;
+  }
+  .brand_logo_box {
+    // border: 1px solid black;
+    justify-self: right;
+    width: 80%;
+  }
+}
+
+@include media-md {
+  .text-section {
+    font-size: 14px;
+  }
+  .features_nav {
+    background-color: $grey-color;
+    min-height: 50px;
+    grid-template-areas: "logo search cart";
+    > .search_bar_box > {
+      justify-self: end;
+      & input {
+        background-color: $grey-color;
+      }
+    }
+    > .brand_logo_box {
+      // border: 1px solid black;
+      justify-self: center;
+      align-self: center;
+      width: 60%;
+      > img {
+        width: 100%;
+      }
+    }
+    > .menu_button {
+      display: block;
+    }
+  }
+  .nav_catagories_wrapper {
+    display: none;
+  }
+  .side_menu {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    > .catagory {
+      box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+        rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+      border-radius: 5px;
+      padding: 5px;
+      margin: 20px 0;
+      > span {
+        font-weight: bold;
+      }
+      > .sub_catagory {
+        // border: 1px solid blue;
+        border-bottom: 1px solid gray;
+        margin: 10px 5px;
+      }
+      > .sub_catagory_item {
+        margin: 5px 10px;
+        // border-bottom: 1px solid white;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@include media-lg {
+  .upper_nav {
+    background-color: white !important;
+    > div {
+      display: none;
+    }
+    .text-section {
+      display: block;
+      margin: auto;
+    }
+  }
+}

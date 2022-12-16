@@ -1,22 +1,45 @@
+
 const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
+require("express-async-errors");
+const bodyParser = require("body-parser");
 
-const connection = require("./config/database");
-const userRouter = require("./routes/user.route");
+const { Auth } = require("./middlewares/Authonticate");
+const { connection } = require("./config/database");
+const { productRouter } = require("../Routes/Product.route");
+v;
+const { userRouter } = require("./routes/user.route");
+const { menRouter } = require("./routes/men.route");
+const router = require("../Routes/Admin.route");
 
-const server = express();
-server.use(cors());
-server.use(express.json());
+const app = express();
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+app.use(express.json());
 
-server.get("/", (req, res) => {
-  res.status(200).send({ message: "Sephora Homepage API" });
+app.get("/", (req, res) => {
+  res
+    .status(200)
+    .send({ message: "welcome to trendy vibes testing Homepage API" });
 });
 
-server.use("/user", userRouter);
+app.use("/user", userRouter);
+app.use(Auth);
 
-server.listen(process.env.PORT, async () => {
+app.use("/men", menRouter);
+
+app.use("/product", productRouter);
+
+app.use(bodyParser.json());
+app.use("/admin", router);
+
+app.listen(process.env.PORT, async () => {
   try {
+    await connection;
     console.log("db is connected successfully");
   } catch (err) {
     console.log("db is connected successfully");
