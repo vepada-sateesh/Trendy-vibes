@@ -18,9 +18,6 @@ let tshirtBrand = [
 menRouter.get("/tshirt", async (req, res) => {
   let brand = req.query.brand || tshirtBrand;
   let discount = req.query.discount || 0;
-  if (req.query.brand) {
-    brand = JSON.parse(brand);
-  }
 
   try {
     let data = await Mentshirt.find({$and:[{discount : {$gte:discount}}]})
