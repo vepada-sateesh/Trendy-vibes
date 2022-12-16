@@ -3,7 +3,6 @@ import SubCatagory from "./SubCatagory";
 import { useState } from "react";
 
 const Catagory = ({ name, sub_section }) => {
-  console.log("sub_section:", sub_section);
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="catagory">

@@ -1,0 +1,33 @@
+@include media-sm {
+  .sliding_offer_wrapper {
+    flex-direction: column;
+    align-items: center;
+    .image_slider {
+      width: 95%;
+    }
+    .quick_links_offer {
+      width: 95%;
+    }
+  }
+  .coupon_box {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@include media-md {
+  .catagory_slider {
+    display: flex;
+  }
+  .sliding_offer_wrapper {
+    > .quick_links_offer {
+      > .offer_list {
+        > li {
+          margin: 10px 0;
+        }
+      }
+    }
+  }
+}
+
+@include media-lg {
+}
