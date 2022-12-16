@@ -21,6 +21,21 @@
       }
     }
   }
+  .product_image_slider {
+    > div {
+      width: 80%;
+      > .image_slider_button {
+        > svg {
+          &:nth-child(1) {
+            left: 0;
+          }
+          &:nth-child(2) {
+            right: 0;
+          }
+        }
+      }
+    }
+  }
 }
 
 @include media-sm {

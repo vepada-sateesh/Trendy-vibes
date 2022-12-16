@@ -3,11 +3,18 @@ import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
 
 const ProductImageSlider = ({ showQty, image }) => {
   const [position, setPosition] = useState(0);
+  if (position < -(image.length - showQty) * (99 / showQty)) {
+    setPosition(0);
+  }
+  if (position > 0) {
+    setPosition(-(image.length - showQty) * (99 / showQty));
+  }
+
   return (
     <div className="product_image_slider">
       <div>
         <div
-          style={{ transform: `translateX(${position}px)` }}
+          style={{ transform: `translateX(${position}%)` }}
           className="product_image_wrapper"
         >
           {image.map((image, id) => {
@@ -22,8 +29,12 @@ const ProductImageSlider = ({ showQty, image }) => {
           })}
         </div>
         <div className="image_slider_button">
-          <AiFillCaretLeft onClick={() => setPosition((prev) => prev + 100)} />
-          <AiFillCaretRight onClick={() => setPosition((prev) => prev - 100)} />
+          <AiFillCaretLeft
+            onClick={() => setPosition((prev) => prev + 99 / showQty)}
+          />
+          <AiFillCaretRight
+            onClick={() => setPosition((prev) => prev - 99 / showQty)}
+          />
         </div>
       </div>
     </div>

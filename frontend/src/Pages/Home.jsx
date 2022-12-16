@@ -171,7 +171,16 @@ const Home = () => {
           "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/headers/dsk/7DEC-HP-Headers-Dsk-08.gif"
         }
       />
-      <ProductImageSlider showQty={4} image={top_brands_slider} />
+      <ProductImageSlider
+        showQty={
+          windowSize.innerWidth >= 768
+            ? 4
+            : windowSize.innerWidth >= 570
+            ? 3
+            : 2
+        }
+        image={top_brands_slider}
+      />
     </div>
   );
 };
