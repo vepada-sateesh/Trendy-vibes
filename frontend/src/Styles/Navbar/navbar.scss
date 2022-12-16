@@ -1,5 +1,5 @@
 @import "config";
-@import "responsive";
+// @import "responsive";
 //upper nav
 
 svg {
@@ -97,12 +97,14 @@ svg {
       text-align: left;
       grid-template-columns: repeat(4, 1fr);
       width: 100%;
+      background-color: white;
       max-height: 500px;
       // border: 1px solid red;
       box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
         rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
       cursor: default;
       position: absolute;
+      z-index: 1;
       // top: 0px;
       left: -200px;
       transition: 200ms linear;
@@ -141,12 +143,14 @@ svg {
 }
 
 .side_menu {
-  height: 100vh;
+  max-height: 100vh;
   overflow: scroll;
   text-align: left;
   padding: 10px;
   width: 100%;
-  border: 1px solid red;
+  // border: 1px solid red;
+  background-color: white;
+  z-index: 1;
   position: absolute;
   left: -100%;
   transition: 200ms linear;
