@@ -7,10 +7,11 @@ const bodyParser = require("body-parser");
 
 const { Auth } = require("./middlewares/Authonticate");
 const { connection } = require("./config/database");
-const { productRouter } = require("./routes/Product.route");
+const { productRouter } = require("../Routes/Product.route");
+v;
 const { userRouter } = require("./routes/user.route");
 const { menRouter } = require("./routes/men.route");
-const router = require("./routes/Admin.route");
+const router = require("../Routes/Admin.route");
 
 const app = express();
 app.use(
@@ -27,14 +28,20 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRouter);
-// app.use(Auth);
+app.use(Auth);
 
 app.use("/men", menRouter);
 
 app.use("/product", productRouter);
+app.use("/faceproduct", faceproductRouter);
 
 app.use(bodyParser.json());
 app.use("/admin", router);
+
+app.use("/user", userRouter);
+// app.use(Auth);
+
+app.use("/men", menRouter);
 
 app.listen(8080, async () => {
   try {
