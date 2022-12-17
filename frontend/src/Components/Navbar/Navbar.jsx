@@ -38,7 +38,7 @@ const Navbar = () => {
     };
   }, []);
   return (
-    <div>
+    <>
       <div className="upper_nav">
         <div>
           <div>
@@ -118,7 +118,7 @@ const Navbar = () => {
           })}
         </div>
       )}
-    </div>
+    </>
   );
 };
 
