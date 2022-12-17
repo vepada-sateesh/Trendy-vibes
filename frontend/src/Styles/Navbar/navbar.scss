@@ -4,6 +4,7 @@
 
 svg {
   color: $pink-color;
+  cursor: pointer;
 }
 
 .upper_nav {
@@ -74,6 +75,30 @@ svg {
   .cart_wishlist_wrapper {
     @include flex($align: center, $justify: flex-end);
     grid-area: cart;
+    > .user_option {
+      font-size: 14px;
+      position: absolute;
+      right: 1%;
+      top: 20%;
+      visibility: hidden;
+      transition: 200ms linear;
+      transform: translate(0, 12%);
+      z-index: 9999;
+      border: 1px solid $grey-color;
+      border-radius: 4px;
+      background-color: white;
+      & > div {
+        padding: 5px;
+        cursor: pointer;
+        &:hover {
+          background-color: $grey-color;
+        }
+      }
+    }
+    > .open_user_option {
+      top: 50%;
+      visibility: visible;
+    }
   }
 }
 

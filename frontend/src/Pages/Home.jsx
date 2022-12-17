@@ -72,7 +72,9 @@ const Home = () => {
       </div>
       <ImageHeader
         src={
-          "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/headers/dsk/7DEC-HP-Headers-Dsk-01.gif"
+          windowSize.innerWidth >= 768
+            ? "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/headers/dsk/7DEC-HP-Headers-Dsk-01.gif"
+            : "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/headers/mob/stat/7DEC-HP-Headers-MOB-01.jpg"
         }
       />
 
@@ -96,7 +98,9 @@ const Home = () => {
 
       <ImageHeader
         src={
-          "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/headers/dsk/7DEC-HP-Headers-Dsk-02.gif"
+          windowSize.innerWidth >= 768
+            ? "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/headers/dsk/7DEC-HP-Headers-Dsk-02.gif"
+            : "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/headers/mob/stat/7DEC-HP-Headers-MOB-02.jpg"
         }
       />
       <div className="price_store">
@@ -114,7 +118,9 @@ const Home = () => {
       </div>
       <ImageHeader
         src={
-          "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/headers/dsk/7DEC-HP-Headers-Dsk-04.gif"
+          windowSize.innerWidth >= 768
+            ? "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/headers/dsk/7DEC-HP-Headers-Dsk-04.gif"
+            : "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/headers/mob/stat/7DEC-HP-Headers-MOB-04.jpg"
         }
       />
       <BannerImage
@@ -130,7 +136,9 @@ const Home = () => {
       ------------------------------ */}
       <ImageHeader
         src={
-          "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/headers/dsk/7DEC-HP-Headers-Dsk-05.gif"
+          windowSize.innerWidth >= 768
+            ? "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/headers/dsk/7DEC-HP-Headers-Dsk-05.gif"
+            : "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/headers/mob/stat/7DEC-HP-Headers-MOB-05.jpg"
         }
       />
       <Griditems image={hot_grid_item} />
@@ -152,7 +160,9 @@ const Home = () => {
       />
       <ImageHeader
         src={
-          "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/headers/dsk/7DEC-HP-Headers-Dsk-06.gif"
+          windowSize.innerWidth >= 768
+            ? "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/headers/dsk/7DEC-HP-Headers-Dsk-06.gif"
+            : "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/headers/mob/stat/7DEC-HP-Headers-MOB-06.jpg"
         }
       />
       <Griditems image={offer_of_the_week} />
@@ -168,7 +178,9 @@ const Home = () => {
       />
       <ImageHeader
         src={
-          "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/headers/dsk/7DEC-HP-Headers-Dsk-08.gif"
+          windowSize.innerWidth >= 768
+            ? "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/headers/dsk/7DEC-HP-Headers-Dsk-08.gif"
+            : "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/headers/mob/stat/7DEC-HP-Headers-MOB-08.jpg"
         }
       />
       <ProductImageSlider

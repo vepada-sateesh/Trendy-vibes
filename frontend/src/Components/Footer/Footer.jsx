@@ -1,11 +1,16 @@
 import React from "react";
 import "../../Styles/Footer/footer.scss";
+import { NavHashLink } from "react-router-hash-link";
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
     <div>
-      <button className="back_to_top_btn">ᐱ Back top top</button>
+      <button className="back_to_top_btn">
+        <NavHashLink to={"#top"} smooth>
+          ᐱ Back top top
+        </NavHashLink>
+      </button>
       <div className="email_input_section">
         <h3 className="email_title">
           GET THE LATEST NEWS & OFFERS IN BEAUTY & FASHION

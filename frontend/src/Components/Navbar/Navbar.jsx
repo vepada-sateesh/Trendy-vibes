@@ -26,6 +26,7 @@ export function getWindowSize() {
 const Navbar = () => {
   const [menuStatus, setMenuStatus] = useState(false);
   const [windowSize, setWindowSize] = useState(getWindowSize());
+  const [isOpenUserOption, setIsOpenUserOption] = useState(false);
   useEffect(() => {
     function handleWindowResize(e) {
       setWindowSize(getWindowSize());
@@ -97,8 +98,20 @@ const Navbar = () => {
           </div>
           <span className="header_saparator">|</span>
           <div>
-            <AiOutlineUser />
-            <span>Login</span>
+            <AiOutlineUser
+              onClick={() => setIsOpenUserOption(!isOpenUserOption)}
+            />
+            {/* <span>Login</span> */}
+          </div>
+          <div
+            className={`user_option ${
+              isOpenUserOption ? "open_user_option" : ""
+            }`}
+          >
+            <div>Debabrata</div>
+            <div>User LogIn</div>
+            <div>Admin LogIn</div>
+            <div>LogOut</div>
           </div>
         </div>
       </div>
