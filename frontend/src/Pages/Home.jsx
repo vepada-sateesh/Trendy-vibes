@@ -14,12 +14,6 @@ import ImageSlider from "../Components/Home/ImageSlider";
 import ImageHeader from "../Components/Home/ImageHeader";
 
 const Home = () => {
-<<<<<<< HEAD
-  let url = "http://localhost:8080/admin/login";
-  return (
-    <div>
-      <a href={url}>Admin</a>
-=======
   const [windowSize, setWindowSize] = useState(getWindowSize());
 
   useEffect(() => {
@@ -72,7 +66,6 @@ const Home = () => {
           "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/headers/dsk/7DEC-HP-Headers-Dsk-01.gif"
         }
       />
-
       <div className="coupon_box">
         {coupon_bag.map((item, id) => {
           return (
@@ -82,13 +75,11 @@ const Home = () => {
           );
         })}
       </div>
-
       <BannerImage
         src={
           "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/NewArrivals-Strip-DSK.jpg"
         }
       />
-
       <ImageHeader
         src={
           "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/headers/dsk/7DEC-HP-Headers-Dsk-02.gif"
@@ -97,7 +88,6 @@ const Home = () => {
       <div className="price_store">
         <CatagorySlider catagoryData={price_store_section} />
       </div>
->>>>>>> 4f2f291a06573e0436998830dc6589e4d0a36f34
     </div>
   );
 };

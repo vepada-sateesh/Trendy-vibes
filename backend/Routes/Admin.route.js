@@ -1,4 +1,3 @@
-
 const AdminBro = require("admin-bro");
 const AdminBroExpress = require("admin-bro-expressjs");
 const AdminBroMongoose = require("admin-bro-mongoose");
@@ -10,11 +9,21 @@ AdminBro.registerAdapter(AdminBroMongoose);
 const adminBro = new AdminBro({
   databases: [mongoose],
   rootPath: "/admin",
+
+  branding: {
+    logo: "",
+    companyName: "TRENDY VIBES",
+    softwareBrothers: false,
+    theme: "https://www.w3schools.com/lib/w3-theme-indigo.css",
+    favicon: "",
+    admin: "",
+    url: "",
+  },
 });
 
 const ADMIN = {
-  email: process.env.ADMIN_EMAIL || "admin@example.com",
-  password: process.env.ADMIN_PASSWORD || "admin",
+  email: process.env.ADMIN_EMAIL,
+  password: process.env.ADMIN_PASSWORD,
 };
 
 const router = AdminBroExpress.buildAuthenticatedRouter(adminBro, {
@@ -31,46 +40,3 @@ const router = AdminBroExpress.buildAuthenticatedRouter(adminBro, {
 });
 
 module.exports = router;
-
-
-
-
-// require("dotenv").config();
-// const cors = require("cors");
-// const express = require("express");
-// require("express-async-errors");
-// const bodyParser = require("body-parser");
-
-// const { connection } = require("../config/database");
-// const { productRouter } = require("../Routes/Product.route");
-// const router = require("../Routes/Admin.route");
-
-// const PORT = process.env.PORT;
-// const app = express();
-
-// app.use(
-//   cors({
-//     origin: "*",
-//   })
-// );
-// app.use(express.json());
-
-// app.use("/product", productRouter);
-
-// app.use(bodyParser.json());
-// app.use("/admin", router);
-
-// app.get("/", (req, res) => {
-//   res.send("Welcome...");
-// });
-
-// app.listen(PORT, async () => {
-//   try {
-//     await connection;
-//     console.log("Connect To DB Successfully");
-//   } catch (err) {
-//     console.log(err);
-//     res.send(404).json({ msg: "Something went wrong " });
-//   }
-//   console.log(`Listing on port ${PORT}`);
-// });

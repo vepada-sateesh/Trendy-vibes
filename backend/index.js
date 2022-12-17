@@ -6,11 +6,12 @@ const bodyParser = require("body-parser");
 
 const { Auth } = require("./middlewares/Authonticate");
 const { connection } = require("./config/database");
-const { productRouter } = require("../Routes/Product.route");
-v;
+const { productRouter } = require("./Routes/Product.route");
+const { faceproductRouter } = require("./Routes/FaceProduct.route");
+
 const { userRouter } = require("./routes/user.route");
 const { menRouter } = require("./routes/men.route");
-const router = require("../Routes/Admin.route");
+const router = require("./Routes/Admin.route");
 
 const app = express();
 app.use(
@@ -26,15 +27,16 @@ app.get("/", (req, res) => {
     .send({ message: "welcome to trendy vibes testing Homepage API" });
 });
 
-app.use("/user", userRouter);
-app.use(Auth);
-
-app.use("/men", menRouter);
-
 app.use("/product", productRouter);
+app.use("/faceproduct", faceproductRouter);
 
 app.use(bodyParser.json());
 app.use("/admin", router);
+
+app.use("/user", userRouter);
+// app.use(Auth);
+
+app.use("/men", menRouter);
 
 app.listen(process.env.PORT, async () => {
   try {
