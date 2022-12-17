@@ -5,13 +5,7 @@ import Home from "./Pages/Home";
 import Footer from "./Components/Footer/Footer";
 
 function App() {
-  return (
-    <div className="App">
-      <Navbar />
-      <Home />
-      <Footer />
-    </div>
-  );
+  return <div className="App"></div>;
 }
 
 export default App;
