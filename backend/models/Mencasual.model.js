@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const mencasualSchema = mongoose.Schema({
+  identifier: String,
   productno: Number,
   description: { type: String, required: true },
   brand: { type: String, required: true },
