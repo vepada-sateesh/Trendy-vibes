@@ -28,7 +28,8 @@ const getProducts = (params ={}) => (dispatch) => {
         })
     })
     .catch(e=>{
-        dispatch({type:types.GET_PRODUCTS_FAILURE})
+        console.log("error ",e)
+        dispatch({type:types.GET_PRODUCTS_FAILURE, payload:e.message})
     })
 }
 

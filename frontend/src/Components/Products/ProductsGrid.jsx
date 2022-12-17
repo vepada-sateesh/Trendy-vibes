@@ -1,29 +1,11 @@
 import { Image, CircularProgress, GridItem, Grid, Text, Flex, Wrap, Center } from "@chakra-ui/react"
-import { useEffect } from "react"
-import { getProducts } from '../../Redux/ProductReducer/action'
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 
 
 function ProductsGrid() {
 
     const productsRecord = useSelector((store) => store.ProductReducer.productsRecord)
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(getProducts({
-            //   category:category,
-            //   type:type,
-            //   page: page,
-            //   limit: 10,
-            //   sort: sort,
-            //   order: sortOrder
-        }));
-
-        // temp
-        //   setSort("price")
-
-    }, [])
-
+    
     console.log("Conponents/Products/ProductGrid: data import success => ", productsRecord)
 
     return (<>

@@ -15,18 +15,20 @@ const reducer = (oldState=initialState, action) => {
             return {
                 ...oldState,
                 isLoading:true,
+                isError:false
             };
             case types.GET_PRODUCTS_SUCCESS:
                 return {
                     ...oldState,
                     isLoading:false,
+                    isError:false,
                     productsRecord:payload
                 };
             case types.GET_PRODUCTS_FAILURE:
                 return {
                     ...oldState,
                     isLoading:false,
-                    isError:true
+                    isError:payload
                 };
             default:
                 return oldState    
