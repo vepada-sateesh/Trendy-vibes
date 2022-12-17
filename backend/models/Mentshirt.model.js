@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 
 const mentshirtSchema = mongoose.Schema({
+  identifier : String,
   productno: Number,
   description: { type: String, required: true },
   brand: { type: String, required: true },
