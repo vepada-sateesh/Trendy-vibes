@@ -2,10 +2,11 @@ const mongoose = require("mongoose");
 
 
 const mentshirtSchema = mongoose.Schema({
+  identifier : String,
   productno: Number,
   description: { type: String, required: true },
   brand: { type: String, required: true },
-  price: { type: String, required: true },
+  price: { type: Number, required: true },
   discount: Number,
   frontimgsrc: { type: String, required: true },
   hidenimgsrc: String,
