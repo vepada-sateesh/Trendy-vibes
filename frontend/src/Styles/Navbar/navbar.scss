@@ -81,7 +81,11 @@ svg {
 .nav_catagories_wrapper {
   @include flex($align: center, $justify: space-around);
   border-bottom: 1px solid rgba(128, 128, 128, 0.452);
-  position: relative;
+  // position: relative;
+  background-color: white;
+  position: sticky;
+  z-index: 999;
+  top: 0;
   > .catagory {
     padding: 5px 5px 0 5px;
     border-radius: 4px 4px 0 0;
