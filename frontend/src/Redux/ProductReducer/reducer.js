@@ -2,8 +2,10 @@ import * as types from "./actionType"
 
 const initialState={
     productsRecord: [],
+    singleProductDetails:[],
     isLoading:false,
     isError:false,
+
 }
 
 const reducer = (oldState=initialState, action) => {

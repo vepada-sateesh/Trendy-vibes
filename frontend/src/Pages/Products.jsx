@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux"
 import DataLoading from '../Components/Products/DataLoading'
 import ErrorMessage from '../Components/Products/ErrorMessage'
 import Paginatation from '../Components/Products/Paginatation'
+import { useState } from 'react'
 
 function Products() {
 
@@ -16,21 +17,27 @@ function Products() {
     const isError = useSelector((store) => store.ProductReducer.isError)
     const dispatch = useDispatch()
 
+    const [limit, setLimit] = useState(10)
+    const [sort, setSort] = useState("")
+    const [discount, setDiscount] = useState(0)
+    const [brand, setBrand] = useState("")
+    const [min, setMin] = useState()
+    const [max, setMax] = useState()
+
     useEffect(() => {
         dispatch(getProducts({
-            //   category:category,
-            //   type:type,
-            //   page: page,
-            //   limit: 10,
-            //   sort: sort,
-            //   order: sortOrder
+              brand:brand,
+              discount:discount,
+              limit: limit,
+              sort: sort,
+              min:min,
+              max:max
         }));
 
-        // temp
-        //   setSort("price")
+    }, [limit, sort, discount, brand, min, max])
 
-    }, [])
 
+    console.log("limit ", brand)
 
     return (
         // chakra provider
@@ -39,14 +46,15 @@ function Products() {
             <Flex w="full" pl="5%" pt="10" gap={"2"}>
 
                 {/* filter component */}
-                <Box w={{ base: '35%', md: '16%', lg: '16%' }} >
-                    <Filters />
+                
+                <Box w="16%" >
+                    <Filters setDiscount={setDiscount} setBrand={setBrand} setMin={setMin} setMax={setMax} min={min} max={max} />
                 </Box>
 
                 {/* product grid & sorting components */}
                 <Box w={{ base: '60%', md: '79%', lg: '79%' }} pt="5">
                     {/* sorting component */}
-                    <Sort />
+                    <Sort setSort={setSort}  />
 
                     {/* if products is loading */}
                     {isLoading? <DataLoading />: <Text> </Text>}
@@ -54,12 +62,12 @@ function Products() {
                     {/* if Product get requets failed */}
                     {isError?<ErrorMessage />: <Text> </Text>}
 
-                    {/* Display products  */}
-                    <ProductsGrid />
-
+                    {/* display products and pagination when data load success */}
+                        {/* display products */}
+                    <ProductsGrid />  
                     {/* paginatation */}
-                    <Paginatation />
-
+                     <Paginatation limit={limit} setLimit={setLimit} />
+                
                 </Box>
             </Flex>
 
