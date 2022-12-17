@@ -1,9 +1,57 @@
-import { Box, Flex, Heading, HStack, Image, StackDivider, Text, VStack } from "@chakra-ui/react";
-import React from "react";
+import {
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+    useDisclosure,
+    Button,
+    Box,
+    Heading,
+    Input,
+    Text,
+    
+  } from "@chakra-ui/react";
+import React, { useEffect } from "react";
+import { useToast } from '@chakra-ui/react'
+
+import { Flex,  HStack, Image, StackDivider, VStack } from "@chakra-ui/react";
+
 import { Link } from "react-router-dom";
 
+
 const Cart = () => {
-    let arr = [
+    const toast = useToast()
+    var disc = localStorage.getItem("discount") || 0
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const [Promo, setPromo] = React.useState("")
+
+    const handleApply = () => {
+        if (Promo === "PR500") {
+            localStorage.setItem("discount", 500);
+            toast({
+                title: 'PROMOCODE',
+                description: "Promode code applied successfully",
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+              })
+        } else {
+            toast({
+                title: 'PROMOCODE',
+                description: "Promode code applied faild",
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+              })
+            //alert("please enter valid Promocode")
+      }
+    
+    };
+    
+     const arr = [
         {
             brandname: "U.S. Polo Assn. Denim Co.",
             productname: "METALLIC LOGO POLO SHIRT",
@@ -11,7 +59,7 @@ const Cart = () => {
             size: "XL",
             img_url: "https://cdn14.nnnow.com/web-images/thumbnail/styles/IUB43TOYANB/1663150197304/1.jpg",
             mrp: " 1,799",
-            price: "1,439",
+            price: "1439",
             discount:"(20% Off)"
 
         },
@@ -22,11 +70,15 @@ const Cart = () => {
             size: "XL",
             img_url: "https://cdn14.nnnow.com/web-images/thumbnail/styles/IUB43TOYANB/1663150197304/1.jpg",
             mrp: " 1,799",
-            price: "1,439",
+            price: "1439",
             discount:"(20% Off)"
 
         }
     ]
+    //var arr =[1,2,3]
+    var total = arr.reduce((a,c)=>a+Number(c.price),0)
+    console.log(total)
+    
   return (
     <div>
       <Box
@@ -82,7 +134,7 @@ const Cart = () => {
                                                       <select>
                                                           <option value="">1</option>
                                                           <option value="">2</option>
-                                                          <option value="">13</option>
+                                                          <option value="">3</option>
                                                       </select></Text>
                                                     </Box>
                                               <Box width={"50%"} color={"black"} lineHeight={"25px"}>
@@ -111,10 +163,44 @@ const Cart = () => {
                   <Box bg={"#F2F2F2"} color={"black"}>
                   <HStack spacing={["0px","0px","0px","0px",'-0px',]}  p={"10px"}>
                     <Box w='40px' h='40px' ml={"15%"}>
-                    <Image h={"25px"} src={"https://static.nnnow.com/client/assets/images/promotions/icon_promo.png"} alt={"tag pic"} />
+                    <Image  h={"25px"} src={"https://static.nnnow.com/client/assets/images/promotions/icon_promo.png"} alt={"tag pic"} />
                     </Box>
-                    <Box w='70%' h='40px' fontWeight={"bold"}>
-                        <span >APPLY PROMOCODE</span>
+                    <Box w='70%' h='40px' fontWeight={"bold"}  pt="-100px" >
+                              {/* <Test/>  */}
+                              <Box position="relative" h="100vh" p={12}>
+      <Button mt="-85px" ml="-50px" p="0px" onClick={onOpen}>
+        APPLY PROMOCODE
+      </Button>
+
+            <Modal isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent>
+                <ModalHeader>Apply Promocode</ModalHeader>
+                <ModalCloseButton />
+                        <ModalBody textAlign={"center"}>
+                            <Input placeholder="Enter Promocode" value={Promo} onChange={(e)=>{setPromo(e.target.value)}}></Input>
+                            <Heading fontSize={"20px"}> PROMOS : PR500</Heading>
+                            <Text>You save INR 500.00</Text>
+                </ModalBody>
+
+                <ModalFooter>
+                    <Button colorScheme="blue" mr={3} onClick={onClose}>
+                    Close
+                    </Button>
+                    <Button
+                    variant="ghost"
+                    onClick={() => {
+                        handleApply();
+                        onClose();
+                        
+                    }}
+                    >
+                    Apply{" "}
+                    </Button>
+                </ModalFooter>
+                </ModalContent>
+            </Modal>
+            </Box>
                     </Box>
                     </HStack>
                   </Box>
@@ -134,7 +220,7 @@ const Cart = () => {
                             <p>Subtotal</p>
                         </Box>
                         <Box  fontWeight={"bold"}>
-                            <p>Rs.{"3,500"}</p>
+                            <p>Rs.{total}</p>
                         </Box>
                     </HStack>
                     </Box>
@@ -144,7 +230,7 @@ const Cart = () => {
                                 <p>DISCOUNT</p>
                             </Box>
                             <Box  fontWeight={"bold"}>
-                                <p>Rs.{"100"}</p>
+                                <p>Rs.{`${disc}`}</p>
                             </Box>
                         </HStack>
                     </Box>
@@ -175,7 +261,7 @@ const Cart = () => {
                                 <p>Total</p>
                             </Box>
                             <Box  fontWeight={"bold"}>
-                                <p>Rs.{"3000"}</p>
+                                <p>Rs.{`${total-disc}`}</p>
                             </Box>
                     </HStack>
                     </Box>
@@ -187,7 +273,8 @@ const Cart = () => {
                   <Image mt={"20px"} src={"https://static.nnnow.com/mybag_offer_banner.jpg"} alt={"banner"}></Image>
 
             </Box>
-        </Flex>
+          </Flex>
+          
     </div>
   );
 };

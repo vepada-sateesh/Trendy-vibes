@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux"
 
 function ProductsGrid() {
 
-    const productsRecord = useSelector((store) => store.ProductReducer.productsRecord) 
+    const productsRecord = useSelector((store) => store.ProductReducer.productsRecord)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -27,12 +27,6 @@ function ProductsGrid() {
     console.log("Conponents/Products/ProductGrid: data import success => ", productsRecord)
 
     return (<>
-
-{/* display below loader while data is loading  */}
-{/* {productsRecord.length>=0?<Center w="full" h="75vh"> <CircularProgress isIndeterminate color='red' />  </Center> : <Text> </Text>} */}
-
-
-    {/* Grid than contain all the products */}
         <Grid templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }} gap={1} w="full" >
             {
                 // map products
