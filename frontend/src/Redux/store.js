@@ -16,6 +16,13 @@ import productsReducer from "./products/reducer";
 const rootReducer = combineReducers({
   auth: authReducer,
   products: productsReducer,
+
+// import {reducer as ProductReducer} from "./ProductReducer/reducer"
+
+// const rootReducer = combineReducers({
+//   auth: authReducer,
+//   ProductReducer
+
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -1,3 +1,4 @@
+
 const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
@@ -6,12 +7,11 @@ const bodyParser = require("body-parser");
 
 const { Auth } = require("./middlewares/Authonticate");
 const { connection } = require("./config/database");
-const { productRouter } = require("./Routes/Product.route");
-const { faceproductRouter } = require("./Routes/FaceProduct.route");
-
+const { productRouter } = require("../Routes/Product.route");
+v;
 const { userRouter } = require("./routes/user.route");
 const { menRouter } = require("./routes/men.route");
-const router = require("./Routes/Admin.route");
+const router = require("../Routes/Admin.route");
 
 const app = express();
 app.use(
@@ -27,6 +27,11 @@ app.get("/", (req, res) => {
     .send({ message: "welcome to trendy vibes testing Homepage API" });
 });
 
+app.use("/user", userRouter);
+app.use(Auth);
+
+app.use("/men", menRouter);
+
 app.use("/product", productRouter);
 app.use("/faceproduct", faceproductRouter);
 
@@ -38,7 +43,7 @@ app.use("/user", userRouter);
 
 app.use("/men", menRouter);
 
-app.listen(process.env.PORT, async () => {
+app.listen(8080, async () => {
   try {
     await connection;
     console.log("db is connected successfully");
@@ -47,5 +52,5 @@ app.listen(process.env.PORT, async () => {
     console.log(err);
   }
 
-  console.log(`Server is listning on http://localhost:${process.env.PORT}`);
+  console.log(`Server is listning on 8080`);
 });
