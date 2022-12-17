@@ -7,11 +7,10 @@ const bodyParser = require("body-parser");
 
 const { Auth } = require("./middlewares/Authonticate");
 const { connection } = require("./config/database");
-const { productRouter } = require("../Routes/Product.route");
-v;
+const { productRouter } = require("./routes/Product.route");
 const { userRouter } = require("./routes/user.route");
 const { menRouter } = require("./routes/men.route");
-const router = require("../Routes/Admin.route");
+const router = require("./routes/Admin.route");
 
 const app = express();
 app.use(
@@ -46,5 +45,5 @@ app.listen(process.env.PORT, async () => {
     console.log(err);
   }
 
-  console.log(`Server is listning on http://localhost:${process.env.PORT}`);
+  console.log(`Server is listning on ${process.env.PORT}`);
 });
