@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "../../Styles/Navbar/navbar.scss";
 import { navCatagories } from "./navCatagories";
+import Logo from "../../trendy_logo.jpg";
 import {
   AiFillStar,
   AiOutlineDropbox,
@@ -17,6 +18,7 @@ import {
 } from "react-icons/md";
 import NavCatagory from "./NavCatagory";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function getWindowSize() {
   const { innerWidth, innerHeight } = window;
@@ -83,10 +85,9 @@ const Navbar = () => {
           <input type="text" placeholder="Search Products" />
         </div>
         <div className="brand_logo_box">
-          <img
-            src="https://cdn02.nnnow.com/web-images/master/navtree_metaData/59b2425ae4b0d70964ee66e0/1505806763887/12NNNOWLOGODESKTOP.png"
-            alt="brand logo"
-          />
+          <Link to={"/"}>
+            <img src={Logo} alt="brand logo" />
+          </Link>
         </div>
         <div className="cart_wishlist_wrapper">
           <div>
@@ -94,7 +95,9 @@ const Navbar = () => {
           </div>
           <span className="header_saparator">|</span>
           <div>
-            <MdOutlineShoppingBag />
+            <Link to={"/cart"}>
+              <MdOutlineShoppingBag />
+            </Link>
           </div>
           <span className="header_saparator">|</span>
           <div>
@@ -108,8 +111,12 @@ const Navbar = () => {
               isOpenUserOption ? "open_user_option" : ""
             }`}
           >
-            <div>Debabrata</div>
-            <div>User LogIn</div>
+            <div>
+              <Link to={"/userinfo"}>Debabrata</Link>
+            </div>
+            <div>
+              <Link to={"/login"}>User LogIn</Link>
+            </div>
             <div>Admin LogIn</div>
             <div>LogOut</div>
           </div>

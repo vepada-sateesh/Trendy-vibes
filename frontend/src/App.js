@@ -1,18 +1,14 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Products from "./Pages/Products";
-import ProductDetails from "./Pages/ProductDetails";
-import UserInfo from "./Pages/UserInfo";
+import AllRoutes from "./Pages/AllRoutes";
+import Login from "./Components/Authentication/Login/Login";
+import { ChakraProvider } from "@chakra-ui/react";
 import Navbar from "./Components/Navbar/Navbar";
-import Home from "./Pages/Home";
-import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Home />
-      <Footer />
+      <AllRoutes />
     </div>
   );
 }

@@ -5,6 +5,7 @@
 svg {
   color: $pink-color;
   cursor: pointer;
+  display: inline !important;
 }
 
 .upper_nav {
@@ -67,10 +68,16 @@ svg {
     left: 5px;
     top: 0;
     bottom: 0;
-    display: none;
+    display: none !important;
   }
   .brand_logo_box {
     grid-area: logo;
+    > a {
+      > img {
+        width: 100%;
+        max-width: 250px;
+      }
+    }
   }
   .cart_wishlist_wrapper {
     @include flex($align: center, $justify: flex-end);
@@ -153,6 +160,10 @@ svg {
           cursor: pointer;
           &:hover {
             color: $pink-color;
+          }
+          & > a {
+            color: black;
+            text-decoration: none;
           }
         }
       }
