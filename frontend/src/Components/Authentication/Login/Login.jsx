@@ -12,8 +12,10 @@ import {
   ModalOverlay,
   useDisclosure,
   useToast,
+  Spinner,
 } from "@chakra-ui/react";
-import React from "react";
+import { ChakraProvider } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 import { authLogin } from "../../../Redux/auth/actions";
@@ -28,6 +30,7 @@ const initialState = {
 };
 
 function Login() {
+  const [loading, setLoading] = useState(false);
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
@@ -36,7 +39,7 @@ function Login() {
   // console.log("authState: ", authState);
   const dispatch = useDispatch();
 
-  // -------- google login------
+  // // -------- google login------
   function googleSignIn() {
     const googleAuthProvider = new GoogleAuthProvider();
     return signInWithPopup(auth, googleAuthProvider);
@@ -108,15 +111,13 @@ function Login() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     // console.log(formData);
     dispatch(authLogin(formData));
   };
-
-  if (authState.data.isAuthenticated) {
-    return <Navigate to={"/"} />;
-  }
+  console.log(loading);
   return (
-    <>
+    <ChakraProvider>
       <Modal isOpen={isOpen} onClose={onClose} size={{ base: "sm", md: "lg" }}>
         <ModalOverlay
           onClick={() => {
@@ -195,7 +196,7 @@ function Login() {
           </Box>
         </ModalContent>
       </Modal>
-    </>
+    </ChakraProvider>
   );
 }
 

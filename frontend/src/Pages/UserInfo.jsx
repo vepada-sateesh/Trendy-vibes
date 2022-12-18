@@ -2,6 +2,7 @@ import React from "react";
 import "../Styles/UserInfo/userinfo.scss";
 import { FaUserCircle } from "react-icons/fa";
 import { useState } from "react";
+import axios from "axios";
 
 const UserInfo = () => {
   const [userName, setUserName] = useState("Debabrata");
@@ -17,10 +18,11 @@ const UserInfo = () => {
     userGender,
     userPassword,
   };
-  console.log(userDetails);
+  // console.log(userDetails);
   const handleNameChange = () => {
     if (!userName) {
       alert("Please Enter Input Field");
+    } else {
     }
   };
   const handleEmailChange = () => {
