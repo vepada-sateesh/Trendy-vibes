@@ -33,11 +33,17 @@ app.use(Auth);
 app.use("/men", menRouter);
 
 app.use("/product", productRouter);
+app.use("/faceproduct", faceproductRouter);
 
 app.use(bodyParser.json());
 app.use("/admin", router);
 
-app.listen(process.env.PORT, async () => {
+app.use("/user", userRouter);
+// app.use(Auth);
+
+app.use("/men", menRouter);
+
+app.listen(8080, async () => {
   try {
     await connection;
     console.log("db is connected successfully");
@@ -46,5 +52,5 @@ app.listen(process.env.PORT, async () => {
     console.log(err);
   }
 
-  console.log(`Server is listning on http://localhost:${process.env.PORT}`);
+  console.log(`Server is listning on 8080`);
 });

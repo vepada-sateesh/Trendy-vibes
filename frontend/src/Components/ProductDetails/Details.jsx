@@ -1,10 +1,12 @@
 import { Box, Button, Center, Flex, Image, Input, Link, Spacer, Text, Wrap, WrapItem } from "@chakra-ui/react"
 import { BsHeart, BsShareFill } from 'react-icons/bs';
+import { useSelector } from "react-redux";
 import {Routes, Route, useNavigate} from 'react-router-dom';
 
 function Details() {
 
     const navigate = useNavigate();
+    const singleProductDetails = useSelector((store)=>store.ProductReducer.singleProductDetails)
 
    function handelAddToBag(){
       navigate('/Products');

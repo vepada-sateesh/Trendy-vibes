@@ -77,7 +77,6 @@ const Home = () => {
             : "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/headers/mob/stat/7DEC-HP-Headers-MOB-01.jpg"
         }
       />
-
       <div className="coupon_box">
         {coupon_bag.map((item, id) => {
           return (
@@ -87,7 +86,6 @@ const Home = () => {
           );
         })}
       </div>
-
       <BannerImage
         src={
           windowSize.innerWidth >= 768
@@ -95,7 +93,6 @@ const Home = () => {
             : "https://logan.nnnow.com/content/dam/nnnow-project/06-dec-2022/hp/NewArrivals-Strip-MOB.jpg"
         }
       />
-
       <ImageHeader
         src={
           windowSize.innerWidth >= 768
@@ -106,6 +103,8 @@ const Home = () => {
       <div className="price_store">
         <CatagorySlider catagoryData={price_store_section} />
       </div>
+<<<<<<< HEAD
+=======
 
       <div className="offer_image_slider">
         <ImageSlider
@@ -193,6 +192,7 @@ const Home = () => {
         }
         image={top_brands_slider}
       />
+>>>>>>> 914263e3dd5786addea3ba71a7f0bed052734867
     </div>
   );
 };

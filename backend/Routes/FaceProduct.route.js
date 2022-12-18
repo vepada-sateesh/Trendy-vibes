@@ -1,18 +1,18 @@
 const express = require("express");
-const { ProductModel } = require("../models/Product.model");
-const productRouter = express.Router();
+const { FaceProductModel } = require("../Models/FaceProduct.model");
+const faceproductRouter = express.Router();
 
 //Get all product
-productRouter.get("/", async (req, res) => {
-  const product = await ProductModel.find();
+faceproductRouter.get("/", async (req, res) => {
+  const product = await FaceProductModel.find();
   res.send(product);
 });
 
 //Add new product
-productRouter.post("/createproduct", async (req, res) => {
+faceproductRouter.post("/create", async (req, res) => {
   const payload = req.body;
   try {
-    const new_product = new ProductModel(payload);
+    const new_product = new FaceProductModel(payload);
     await new_product.save();
     res.send({ msg: "Product created successfully" });
   } catch (err) {
@@ -21,13 +21,13 @@ productRouter.post("/createproduct", async (req, res) => {
 });
 
 //Update product
-productRouter.put("/update/:id", async (req, res) => {
+faceproductRouter.put("/update/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const updatedData = req.body;
     const options = { new: true };
 
-    const result = await ProductModel.findByIdAndUpdate(
+    const result = await FaceProductModel.findByIdAndUpdate(
       id,
       updatedData,
       options
@@ -39,14 +39,14 @@ productRouter.put("/update/:id", async (req, res) => {
 });
 
 //Delete product
-productRouter.delete("/delete/:id", async (req, res) => {
+faceproductRouter.delete("/delete/:id", async (req, res) => {
   const productID = req.params.id;
   try {
-    await ProductModel.findByIdAndDelete({ _id: productID });
+    await FaceProductModel.findByIdAndDelete({ _id: productID });
     res.send({ msg: "Product deleted successfully" });
   } catch (err) {
     res.send(400).send({ msg: "Something Went Wrong" });
   }
 });
 
-module.exports = { productRouter };
+module.exports = { faceproductRouter };
