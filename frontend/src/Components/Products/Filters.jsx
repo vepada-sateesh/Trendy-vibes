@@ -1,8 +1,8 @@
-import { Accordion, AccordionPanel, AccordionButton, AccordionItem, AccordionIcon, Box, Heading, Checkbox, Divider, Wrap, Button, Text } from '@chakra-ui/react'
+import { Accordion, AccordionPanel, AccordionButton, AccordionItem, AccordionIcon, Box, Heading, Checkbox, Divider, Wrap, Input, Text, Select, Flex } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 
-function Filters() {
+function Filters({setDiscount, setBrand, brand, setMin, setMax, min, max}) {
     return (<>
 
         {/*  Category  */}
@@ -12,10 +12,8 @@ function Filters() {
             </Heading>
 
             {/* catogory checkboxes */}
-            <Checkbox pl="7%" colorScheme='red' >Jeans</Checkbox>
-            <Divider />
-            <Checkbox pl="7%" colorScheme='red'>New Arrivals</Checkbox>
-            <Checkbox pl="7%" colorScheme='red'>On Sale</Checkbox>
+            <Checkbox pl="7%" colorScheme='red'  onChange={()=>setDiscount(0)}> New Arrivals</Checkbox>
+            <Checkbox pl="7%" colorScheme='red'  onChange={()=>setDiscount(50)}> On Sale</Checkbox>
             <Divider />
         </Wrap>
         {/* Category over here */}
@@ -29,6 +27,27 @@ function Filters() {
 
             {/* filters options */}
             <Accordion w="full">
+
+            <AccordionItem  m="2">
+                        <h2>
+                            <AccordionButton border={"2px"} borderColor="black" _expanded={{ bg: 'black', color: 'white', border: '5px' }}>
+                                <Box as="span" flex='1' textAlign='left'>
+                                    Price
+                                </Box>
+                                <MdOutlineArrowForwardIos />
+                            </AccordionButton>
+                        </h2>
+
+                        {/* display when user extend filter */}
+                        <AccordionPanel pt={5}>
+                            <Flex gap="6px">
+                            <Input placeholder="min" value={min} onChange={(e)=>{setMin(e.target.value)}}  /> 
+                            <Text mt="7px">to</Text>
+                            <Input placeholder="max" value={max} onChange={(e)=>{setMax(e.target.value)}}  /> 
+                            </Flex>
+                        </AccordionPanel>
+                    </AccordionItem>
+               
 
                 {/* map all fliters */}
                 {filtersList.map((el) => (
@@ -44,10 +63,16 @@ function Filters() {
                             </AccordionButton>
                         </h2>
 
+
                         {/* display when user extend filter */}
                         <AccordionPanel pb={4}>
                             {el.moreOpt.map((item) => (
-                                <Box w="full" > <Checkbox colorScheme='red' key={item.id} w="full" float={"left"} pt="5px" pb="5px">{item}</Checkbox></Box>
+                                <Box w="full" >
+                                     <Checkbox colorScheme='red' key={item.id} w="full" float={"left"} pt="5px" pb="5px" onChange={()=>{setBrand([...brand, item])}}>
+                                        {item}
+                                     </Checkbox>
+                                
+                                </Box>
                                 // <Text> {item} </Text>
                             ))}
                             
@@ -62,11 +87,11 @@ function Filters() {
     </>)
 }
 
-const filtersList = [{ opt: "Size", moreOpt: ["28", "30", "32", "34", "36", "38", "M", "L"] },
+const filtersList = [
+    { opt: "Brands", moreOpt: ["Arrow","Tommy Hilfiger","Calvin Klein","Arrow Newyork","U.S. Polo Assn. Denim Co.", "U.S. Polo Assn.", "Calvin Klein Jeans",] },
+    { opt: "Size", moreOpt: ["28", "30", "32", "34", "36", "38", "M", "L"] },
 { opt: "Color", moreOpt: ["White", "Black", "Blue", "Red", "Green", "Yellow", "Orange",] },
 { opt: "Promotion", moreOpt: ["Buy at 10% Off"] },
-{ opt: "Price", moreOpt: ["Below Rs. 999", "Rs. 1000 - Rs. 1499", "Above Rs. 1500"] },
-// {opt:"Store", moreOpt:[]},
 { opt: "Fit", moreOpt: ["Skinny Fit", "Slim Fit", "Regular Fit", "Tapered Fit", "Straight Fit"] },
 { opt: "Material", moreOpt: ["Cotton", "Lyocell", "Tencel", "Other"] },
 { opt: "Occasion", moreOpt: ["Casual", "Party Wear"] },
