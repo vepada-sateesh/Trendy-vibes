@@ -103,8 +103,6 @@ const Home = () => {
       <div className="price_store">
         <CatagorySlider catagoryData={price_store_section} />
       </div>
-<<<<<<< HEAD
-=======
 
       <div className="offer_image_slider">
         <ImageSlider
@@ -192,7 +190,6 @@ const Home = () => {
         }
         image={top_brands_slider}
       />
->>>>>>> 914263e3dd5786addea3ba71a7f0bed052734867
     </div>
   );
 };
