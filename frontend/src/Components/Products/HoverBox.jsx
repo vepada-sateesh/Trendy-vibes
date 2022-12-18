@@ -7,10 +7,10 @@ function HoverBox({el}){
     return(<>
     
     
-    <Box w="full" h={{ base: "250px", md: "350px", lg: "400px" }} bg="red">
+    <Box w="full" h="400px" bg="#ff3399">
                
                             {/* second image of product */}
-                            <Image src={el.hidenimgsrc} w="full" h={{ base: "160px", md: "260px", lg: "310px" }} />
+                            <Image src={el.hidenimgsrc} alt="image removed " w="full" h="310px" />
                             
                             {/* below image buttons */}
 

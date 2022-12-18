@@ -1,4 +1,4 @@
-import { ChakraProvider, Text } from '@chakra-ui/react'
+import { ChakraProvider, Hide, Show, Text } from '@chakra-ui/react'
 import { Flex, Stack, HStack, VStack, Box } from '@chakra-ui/react'
 import Filters from '../Components/Products/Filters'
 import ProductsGrid from '../Components/Products/ProductsGrid'
@@ -10,6 +10,7 @@ import DataLoading from '../Components/Products/DataLoading'
 import ErrorMessage from '../Components/Products/ErrorMessage'
 import Paginatation from '../Components/Products/Paginatation'
 import { useState } from 'react'
+import SmallScreenFilters from '../Components/Products/SmallScreenFilters'
 
 function Products() {
 
@@ -46,13 +47,22 @@ function Products() {
             <Flex w="full" pl="5%" pt="10" gap={"2"}>
 
                 {/* filter component */}
-                
+                <Show above="lg">  
                 <Box w="16%" >
                     <Filters setDiscount={setDiscount} setBrand={setBrand} setMin={setMin} setMax={setMax} min={min} max={max} />
                 </Box>
+                </Show>
+
 
                 {/* product grid & sorting components */}
-                <Box w={{ base: '60%', md: '79%', lg: '79%' }} pt="5">
+                <Box w={{ base: '95%', md: '95%', lg: '79%' }} pt="5">
+
+                    {/* show this component only in mobile screen */}
+                    {/* this is filters component */}
+                    <Show below='lg'>
+                    <SmallScreenFilters setDiscount={setDiscount} setBrand={setBrand} setMin={setMin} setMax={setMax} min={min} max={max} />
+                    </Show>
+
                     {/* sorting component */}
                     <Sort setSort={setSort}  />
 

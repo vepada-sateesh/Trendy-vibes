@@ -1,7 +1,6 @@
-import { Image, CircularProgress, GridItem, Grid, Text, Flex, Wrap, Center, Box, Hide } from "@chakra-ui/react"
+import { Image,  GridItem, Grid, Text, Flex, Wrap, Center, Box, Hide } from "@chakra-ui/react"
 import { useState } from "react"
 import { useSelector } from "react-redux"
-import { BsHeart, BsHandbag } from 'react-icons/bs';
 import HoverBox from "../Products/HoverBox"
 
 
@@ -9,25 +8,25 @@ import HoverBox from "../Products/HoverBox"
 function ProductsGrid() {
 
     const productsRecord = useSelector((store) => store.ProductReducer.productsRecord)
-    const [imgSrc, setImgSrc] = useState("")
     console.log("Conponents/Products/ProductGrid: data import success => ", productsRecord)
 
     return (<>
         <Grid templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }} gap={"25px"} w="full" >
             {
                 // map products
-                productsRecord.mencasual?.map((el) => (
+                productsRecord.data?.map((el) => (
 
                     // grid item than contain data of single product
                     <GridItem w='100%' h="fit-content" key={el.id} >
 
                         {/* product image, add to wishlist or cart */}
-                        <Box w="full" h={{ base: "250px", md: "350px", lg: "400px" }} overflow={"hidden"} cursor={"pointer"} >
+                        <Box w="full" h="400px" overflow={"hidden"} cursor={"pointer"} >
                             
                             {/* product image */}
                             <Box _hover={{ h: "0px", w: "0px" }}
-                                w="full" h={{ base: "250px", md: "350px", lg: "400px" }} >
+                                w="full" h="400px" >
                                 <Image src={el.frontimgsrc} w="full" h="full"
+                                
                                 />
                             </Box>
                             

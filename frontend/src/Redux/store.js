@@ -11,11 +11,11 @@ import {
 
 import thunk from "redux-thunk";
 import authReducer from "./auth/reducer";
-import productsReducer from "./products/reducer";
+import {reducer as ProductReducer} from "./ProductReducer/reducer"
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  products: productsReducer,
+  ProductReducer,
 
 // import {reducer as ProductReducer} from "./ProductReducer/reducer"
 
