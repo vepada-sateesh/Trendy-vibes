@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import "../../Styles/Navbar/navbar.scss";
 import { navCatagories } from "./navCatagories";
+import { useNavigate } from "react-router-dom";
+import { setSingleProductDetails } from "../../Redux/ProductReducer/action";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import Logo from "../../trendy_logo.jpg";
 import {
   AiFillStar,
   AiOutlineDropbox,
@@ -14,9 +20,12 @@ import {
   MdSearch,
   MdOutlineShoppingBag,
   MdMenu,
+  MdOutlineAdminPanelSettings,
 } from "react-icons/md";
 import NavCatagory from "./NavCatagory";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
 export function getWindowSize() {
   const { innerWidth, innerHeight } = window;
@@ -26,6 +35,52 @@ export function getWindowSize() {
 const Navbar = () => {
   const [menuStatus, setMenuStatus] = useState(false);
   const [windowSize, setWindowSize] = useState(getWindowSize());
+  const [isOpenUserOption, setIsOpenUserOption] = useState(false);
+  const [searchQuary, setSearchQuary] = useState("");
+  const [searchProducts, setSearchProducts] = useState([]);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const token = localStorage.getItem("token");
+  console.log("token:", token);
+  if (token) {
+    const user_information = jwt_decode(token, "secret");
+    localStorage.setItem("user_info", JSON.stringify(user_information));
+  }
+
+  let user_name = localStorage.getItem("user_info");
+  user_name = JSON.parse(user_name);
+  const handleUserLogOut = () => {
+    localStorage.removeItem("user_info");
+    localStorage.removeItem("token");
+    alert("LogOut Successfully 😊✔");
+  };
+
+  // const store = useSelector((store) => console.log(store));
+
+  // console.log("searchProducts:", searchProducts);
+  // console.log("searchProducts:", searchProducts.length);
+  const handleRedirect = (params) => {
+    dispatch(setSingleProductDetails(params));
+    setSearchProducts([]);
+    navigate("/ProductDetails");
+  };
+
+  useEffect(() => {
+    const debounce = setTimeout(() => {
+      if (searchQuary.length === 0) {
+        setSearchProducts([]);
+      } else {
+        axios
+          .get(
+            `https://trendy-vibes-backend-production.up.railway.app/men/tshirt?search=${searchQuary}&limit=5`
+          )
+          .then((res) => setSearchProducts(res.data.data));
+      }
+    }, 1000);
+    return () => {
+      clearTimeout(debounce);
+    };
+  }, [searchQuary]);
   useEffect(() => {
     function handleWindowResize(e) {
       setWindowSize(getWindowSize());
@@ -79,13 +134,32 @@ const Navbar = () => {
         />
         <div className="search_bar_box">
           <MdSearch className="search_icon" />
-          <input type="text" placeholder="Search Products" />
+          <input
+            onChange={(e) => setSearchQuary(e.target.value)}
+            value={searchQuary}
+            type="text"
+            placeholder="Search Products"
+          />
+          <div className="serch_result_box">
+            {searchProducts.length > 0 &&
+              searchProducts.map((item, id) => {
+                return (
+                  <div
+                    onClick={() => handleRedirect(item)}
+                    key={id}
+                    className="search_product_list"
+                  >
+                    <img src={item.frontimgsrc} />
+                    <span>{item.description}</span>
+                  </div>
+                );
+              })}
+          </div>
         </div>
         <div className="brand_logo_box">
-          <img
-            src="https://cdn02.nnnow.com/web-images/master/navtree_metaData/59b2425ae4b0d70964ee66e0/1505806763887/12NNNOWLOGODESKTOP.png"
-            alt="brand logo"
-          />
+          <Link to={"/"}>
+            <img src={Logo} alt="brand logo" />
+          </Link>
         </div>
         <div className="cart_wishlist_wrapper">
           <div>
@@ -93,12 +167,50 @@ const Navbar = () => {
           </div>
           <span className="header_saparator">|</span>
           <div>
-            <MdOutlineShoppingBag />
+            <Link to={"/cart"}>
+              <MdOutlineShoppingBag />
+            </Link>
           </div>
           <span className="header_saparator">|</span>
           <div>
-            <AiOutlineUser />
-            <span>Login</span>
+            <AiOutlineUser
+              onClick={() => setIsOpenUserOption(!isOpenUserOption)}
+            />
+            {/* <span>Login</span> */}
+          </div>
+          <div
+            className={`user_option ${
+              isOpenUserOption ? "open_user_option" : ""
+            }`}
+          >
+            {token && (
+              <div>
+                <Link to={"/userinfo"}>{user_name?.name}</Link>
+              </div>
+            )}
+            {!token && (
+              <div>
+                <Link to={"/login"}>User LogIn</Link>
+              </div>
+            )}
+            {!token && (
+              <div>
+                <Link to={"/signup"}>User SignUp</Link>
+              </div>
+            )}
+            <div>
+              <a
+                href="https://trendy-vibes-backend-production.up.railway.app/admin/login"
+                target={"_blank"}
+              >
+                Admin LogIn
+              </a>
+            </div>
+            {token && (
+              <div onClick={handleUserLogOut}>
+                <Link to="#">LogOut</Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@ export const navCatagories = [
         name: "Top Wear",
         link: "#",
         items: [
-          { name: "T-Shirts & Polos", link: "#" },
+          { name: "T-Shirts & Polos", link: "/mens" },
           { name: "Casual Shirts", link: "#" },
           { name: "Formal Shirts", link: "#" },
           { name: "Sweetshirts", link: "#" },

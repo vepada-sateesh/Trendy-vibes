@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.user_info {
+  width: max-content;
+  //   border: 1px solid black;
+  margin: auto;
+  > .user_avatar {
+    // border: 3px solid black;
+    > svg {
+      color: gray;
+      font-size: 120px;
+      border: 3px solid gray;
+      border-radius: 50%;
+    }
+  }
+}
+
+table {
+  margin: auto;
+  border-collapse: separate;
+  border-spacing: 0 0.8em;
+  > tbody {
+    > tr {
+      margin: 10px 0;
+    }
+  }
+  input {
+    border: none;
+    outline: 1px solid grey;
+    height: 25px;
+    padding: 0 5px;
+  }
+  button {
+    height: 25px;
+    padding: 0 5px;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  @media screen and (max-width: 575px) {
+    font-size: 12px;
+  }
+}
