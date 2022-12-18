@@ -21,7 +21,7 @@ function Products() {
     const [limit, setLimit] = useState(10)
     const [sort, setSort] = useState("")
     const [discount, setDiscount] = useState(0)
-    const [brand, setBrand] = useState("")
+    const [brand, setBrand] = useState([])
     const [min, setMin] = useState()
     const [max, setMax] = useState()
 
@@ -49,7 +49,7 @@ function Products() {
                 {/* filter component */}
                 <Show above="lg">  
                 <Box w="16%" >
-                    <Filters setDiscount={setDiscount} setBrand={setBrand} setMin={setMin} setMax={setMax} min={min} max={max} />
+                    <Filters setDiscount={setDiscount} setBrand={setBrand} brand={brand} setMin={setMin} setMax={setMax} min={min} max={max} />
                 </Box>
                 </Show>
 

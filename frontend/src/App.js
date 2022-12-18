@@ -1,9 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Products from "./Pages/Products"
 
 function App() {
-  return <div className="App"> <Products /> </div>;
+  return <div className="App"></div>;
 }
 
 export default App;

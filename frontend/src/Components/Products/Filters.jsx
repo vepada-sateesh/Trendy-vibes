@@ -2,7 +2,7 @@ import { Accordion, AccordionPanel, AccordionButton, AccordionItem, AccordionIco
 import { ChevronRightIcon } from '@chakra-ui/icons'
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 
-function Filters({setDiscount, setBrand, setMin, setMax, min, max}) {
+function Filters({setDiscount, setBrand, brand, setMin, setMax, min, max}) {
     return (<>
 
         {/*  Category  */}
@@ -63,11 +63,12 @@ function Filters({setDiscount, setBrand, setMin, setMax, min, max}) {
                             </AccordionButton>
                         </h2>
 
+
                         {/* display when user extend filter */}
                         <AccordionPanel pb={4}>
                             {el.moreOpt.map((item) => (
                                 <Box w="full" >
-                                     <Checkbox colorScheme='red' key={item.id} w="full" float={"left"} pt="5px" pb="5px">
+                                     <Checkbox colorScheme='red' key={item.id} w="full" float={"left"} pt="5px" pb="5px" onChange={()=>{setBrand([...brand, item])}}>
                                         {item}
                                      </Checkbox>
                                 
