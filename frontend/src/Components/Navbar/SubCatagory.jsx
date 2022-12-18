@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SubCatagory = (section) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +13,7 @@ const SubCatagory = (section) => {
         section?.items.map((items, id) => {
           return (
             <div className="sub_catagory_item" key={id}>
-              {items.name}
+              <Link to={"/mens"}>{items.name}</Link>
             </div>
           );
         })}

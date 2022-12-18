@@ -4,6 +4,8 @@
 
 svg {
   color: $pink-color;
+  cursor: pointer;
+  display: inline !important;
 }
 
 .upper_nav {
@@ -66,14 +68,44 @@ svg {
     left: 5px;
     top: 0;
     bottom: 0;
-    display: none;
+    display: none !important;
   }
   .brand_logo_box {
     grid-area: logo;
+    > a {
+      > img {
+        width: 100%;
+        max-width: 250px;
+      }
+    }
   }
   .cart_wishlist_wrapper {
     @include flex($align: center, $justify: flex-end);
     grid-area: cart;
+    > .user_option {
+      font-size: 14px;
+      position: absolute;
+      right: 1%;
+      top: 20%;
+      visibility: hidden;
+      transition: 200ms linear;
+      transform: translate(0, 12%);
+      z-index: 9999;
+      border: 1px solid $grey-color;
+      border-radius: 4px;
+      background-color: white;
+      & > div {
+        padding: 5px;
+        cursor: pointer;
+        &:hover {
+          background-color: $grey-color;
+        }
+      }
+    }
+    > .open_user_option {
+      top: 50%;
+      visibility: visible;
+    }
   }
 }
 
@@ -128,6 +160,10 @@ svg {
           cursor: pointer;
           &:hover {
             color: $pink-color;
+          }
+          & > a {
+            color: black;
+            text-decoration: none;
           }
         }
       }

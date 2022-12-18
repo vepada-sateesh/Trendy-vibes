@@ -6,6 +6,11 @@
   background-color: $light-green;
   border: none;
   text-transform: uppercase;
+  margin-top: 30px;
+  > a {
+    text-decoration: none;
+    color: black;
+  }
 }
 
 .email_input_section {
@@ -31,16 +36,16 @@
 }
 
 section > {
-  margin: 20px 0;
-  border: 1px solid red;
   div.section_heading {
     font-size: $heading-text;
     font-weight: bold;
     margin: 10px 0;
+    color: $grey-color;
   }
   p.section_text {
     font-size: $small-text;
     line-height: 1.7;
+    color: $grey-color;
   }
   .footer_links_title {
     margin: 10px 0;
