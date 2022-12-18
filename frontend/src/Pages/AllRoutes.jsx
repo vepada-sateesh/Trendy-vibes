@@ -1,5 +1,5 @@
 import React from "react";
-// import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { Route, Routes } from "react-router-dom";
 import Login from "../Components/Authentication/Login/Login";
 import Signup from "../Components/Authentication/Signup/Signup";
@@ -15,57 +15,27 @@ import UserInfo from "./UserInfo";
 const AllRoutes = () => {
   return (
     <Routes>
+      <Route path="/" element={<Home />} />
       <Route
-        path="/"
+        path="/login"
         element={
-          <>
-            <Navbar />
-            <Home />
-            <Footer />
-          </>
-        }
-      />
-      <Route path="/login" element={<Login />} />
-      <Route
-        path="/mens"
-        element={
-          <>
-            <Navbar />
-            <Products />
-            <Footer />
-          </>
+          <ChakraProvider>
+            <Login />
+          </ChakraProvider>
         }
       />
       <Route
-        path="/cart"
+        path="/signup"
         element={
-          <>
-            <Navbar />
-            <Cart />
-            <Footer />
-          </>
+          <ChakraProvider>
+            <Signup />
+          </ChakraProvider>
         }
       />
-      <Route
-        path="/userinfo"
-        element={
-          <>
-            <Navbar />
-            <UserInfo />
-            <Footer />
-          </>
-        }
-      />
-      <Route
-        path="/ProductDetails"
-        element={
-          <>
-            <Navbar />
-            <ProductDetails />
-            <Footer />
-          </>
-        }
-      />
+      <Route path="/mens" element={<Products />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/userinfo" element={<UserInfo />} />
+      <Route path="/ProductDetails" element={<ProductDetails />} />
     </Routes>
   );
 };

@@ -20,10 +20,12 @@ import {
   MdSearch,
   MdOutlineShoppingBag,
   MdMenu,
+  MdOutlineAdminPanelSettings,
 } from "react-icons/md";
 import NavCatagory from "./NavCatagory";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
 export function getWindowSize() {
   const { innerWidth, innerHeight } = window;
@@ -38,6 +40,20 @@ const Navbar = () => {
   const [searchProducts, setSearchProducts] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const token = localStorage.getItem("token");
+  console.log("token:", token);
+  if (token) {
+    const user_information = jwt_decode(token, "secret");
+    localStorage.setItem("user_info", JSON.stringify(user_information));
+  }
+
+  let user_name = localStorage.getItem("user_info");
+  user_name = JSON.parse(user_name);
+  const handleUserLogOut = () => {
+    localStorage.removeItem("user_info");
+    localStorage.removeItem("token");
+    alert("LogOut Successfully 😊✔");
+  };
 
   // const store = useSelector((store) => console.log(store));
 
@@ -167,14 +183,34 @@ const Navbar = () => {
               isOpenUserOption ? "open_user_option" : ""
             }`}
           >
+            {token && (
+              <div>
+                <Link to={"/userinfo"}>{user_name?.name}</Link>
+              </div>
+            )}
+            {!token && (
+              <div>
+                <Link to={"/login"}>User LogIn</Link>
+              </div>
+            )}
+            {!token && (
+              <div>
+                <Link to={"/signup"}>User SignUp</Link>
+              </div>
+            )}
             <div>
-              <Link to={"/userinfo"}>Debabrata</Link>
+              <a
+                href="https://trendy-vibes-backend-production.up.railway.app/admin/login"
+                target={"_blank"}
+              >
+                Admin LogIn
+              </a>
             </div>
-            <div>
-              <Link to={"/login"}>User LogIn</Link>
-            </div>
-            <div>Admin LogIn</div>
-            <div>LogOut</div>
+            {token && (
+              <div onClick={handleUserLogOut}>
+                <Link to="#">LogOut</Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

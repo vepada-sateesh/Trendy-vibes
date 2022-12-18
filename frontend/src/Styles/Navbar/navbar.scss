@@ -121,8 +121,18 @@ svg {
       & > div {
         padding: 5px;
         cursor: pointer;
+        transition: 500ms linear;
+        border-bottom: 1px solid grey;
+        > a {
+          font-weight: 500;
+          color: black;
+          text-decoration: none;
+        }
         &:hover {
-          background-color: $grey-color;
+          background-color: blue;
+          & > a {
+            color: white;
+          }
         }
       }
     }
