@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 import "../../Styles/Navbar/navbar.scss";
 import { navCatagories } from "./navCatagories";
+import { useNavigate } from "react-router-dom";
+import { setSingleProductDetails } from "../../Redux/ProductReducer/action";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import axios from "axios";
 import Logo from "../../trendy_logo.jpg";
 import {
   AiFillStar,
@@ -29,6 +34,37 @@ const Navbar = () => {
   const [menuStatus, setMenuStatus] = useState(false);
   const [windowSize, setWindowSize] = useState(getWindowSize());
   const [isOpenUserOption, setIsOpenUserOption] = useState(false);
+  const [searchQuary, setSearchQuary] = useState("");
+  const [searchProducts, setSearchProducts] = useState([]);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  // const store = useSelector((store) => console.log(store));
+
+  // console.log("searchProducts:", searchProducts);
+  // console.log("searchProducts:", searchProducts.length);
+  const handleRedirect = (params) => {
+    dispatch(setSingleProductDetails(params));
+    setSearchProducts([]);
+    navigate("/ProductDetails");
+  };
+
+  useEffect(() => {
+    const debounce = setTimeout(() => {
+      if (searchQuary.length === 0) {
+        setSearchProducts([]);
+      } else {
+        axios
+          .get(
+            `https://trendy-vibes-backend-production.up.railway.app/men/tshirt?search=${searchQuary}&limit=5`
+          )
+          .then((res) => setSearchProducts(res.data.data));
+      }
+    }, 1000);
+    return () => {
+      clearTimeout(debounce);
+    };
+  }, [searchQuary]);
   useEffect(() => {
     function handleWindowResize(e) {
       setWindowSize(getWindowSize());
@@ -82,7 +118,27 @@ const Navbar = () => {
         />
         <div className="search_bar_box">
           <MdSearch className="search_icon" />
-          <input type="text" placeholder="Search Products" />
+          <input
+            onChange={(e) => setSearchQuary(e.target.value)}
+            value={searchQuary}
+            type="text"
+            placeholder="Search Products"
+          />
+          <div className="serch_result_box">
+            {searchProducts.length > 0 &&
+              searchProducts.map((item, id) => {
+                return (
+                  <div
+                    onClick={() => handleRedirect(item)}
+                    key={id}
+                    className="search_product_list"
+                  >
+                    <img src={item.frontimgsrc} />
+                    <span>{item.description}</span>
+                  </div>
+                );
+              })}
+          </div>
         </div>
         <div className="brand_logo_box">
           <Link to={"/"}>
