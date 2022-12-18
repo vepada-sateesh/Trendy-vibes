@@ -1,5 +1,5 @@
 import React from "react";
-import { ChakraProvider } from "@chakra-ui/react";
+// import { ChakraProvider } from "@chakra-ui/react";
 import { Route, Routes } from "react-router-dom";
 import Login from "../Components/Authentication/Login/Login";
 import Signup from "../Components/Authentication/Signup/Signup";
@@ -52,6 +52,16 @@ const AllRoutes = () => {
           <>
             <Navbar />
             <UserInfo />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/ProductDetails"
+        element={
+          <>
+            <Navbar />
+            <ProductDetails />
             <Footer />
           </>
         }

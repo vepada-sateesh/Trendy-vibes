@@ -59,6 +59,30 @@ svg {
       position: absolute;
       left: 0;
     }
+    > .serch_result_box {
+      position: absolute;
+      top: 20%;
+      transform: translate(0, 12%);
+      background-color: white;
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+      z-index: 9999;
+      > .search_product_list {
+        display: flex;
+        border-bottom: 1px solid gray;
+        padding: 2px;
+        > img {
+          height: 50px;
+        }
+        > span {
+          font-size: 12px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+        }
+      }
+    }
   }
   .menu_button {
     color: blue;
