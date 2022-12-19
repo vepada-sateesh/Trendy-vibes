@@ -1,14 +1,24 @@
 import { Image,  GridItem, Grid, Text, Flex, Wrap, Center, Box, Hide } from "@chakra-ui/react"
 import { useState } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import HoverBox from "../Products/HoverBox"
-
+import { setSingleProductDetails } from "../../Redux/ProductReducer/action";
 
 
 function ProductsGrid() {
 
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
     const productsRecord = useSelector((store) => store.ProductReducer.productsRecord)
     console.log("Conponents/Products/ProductGrid: data import success => ", productsRecord)
+
+    function handelGoToProductDetailsPage(el){
+        
+        const params = el
+        dispatch(setSingleProductDetails(params));
+        navigate("/ProductDetails")
+    }
 
     return (<>
         <Grid templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }} gap={"25px"} w="full" >
@@ -39,6 +49,7 @@ function ProductsGrid() {
 
 
 
+<Box onClick={()=>{ handelGoToProductDetailsPage(el) }} cursor="pointer">
                         {/* offer tag */}
                         <Wrap w="fit-content" m="auto" mt="10px">
 
@@ -60,6 +71,7 @@ function ProductsGrid() {
 
                         {/* more offer */}
                         <Text fontSize='sm'> 1 more offer </Text>
+                        </Box>
                     </GridItem>
                 ))}
         </Grid>

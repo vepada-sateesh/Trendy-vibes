@@ -1,4 +1,4 @@
-import { HamburgerIcon } from '@chakra-ui/icons'
+import { BiFilterAlt } from 'react-icons/bi'
 import {
     Drawer,
     DrawerBody,
@@ -8,7 +8,6 @@ import {
     DrawerContent,
     DrawerCloseButton,
     Button,
-    Input,
     useDisclosure,
     IconButton
   } from '@chakra-ui/react'
@@ -23,7 +22,7 @@ function SmallScreenFilters({setDiscount, setBrand, setMin, setMax, min, max}) {
     return (
       <>
 
-        <IconButton ref={btnRef} colorScheme='red' onClick={onOpen} aria-label='Filters' icon={<HamburgerIcon />} float={"left"} />
+        <IconButton ref={btnRef} colorScheme='red' onClick={onOpen} aria-label='Filters' icon={<BiFilterAlt />} float={"left"} />
 
         <Drawer
           isOpen={isOpen}

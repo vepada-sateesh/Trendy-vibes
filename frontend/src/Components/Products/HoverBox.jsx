@@ -51,7 +51,7 @@ function HoverBox({ el }) {
                             
                             {/* wishlist button */}
                             <Box align="center" _hover={{border:"1px", borderColor:"white"}}>
-                                <BsHeart size={"30px"}  />
+                                <BsHeart size={"30px"} color="white" />
                             <Text fontSize='xs'>FAVOURITE</Text>
                             </Box>
                             
