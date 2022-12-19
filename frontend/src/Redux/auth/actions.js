@@ -10,33 +10,38 @@ import {
 import axios from "axios";
 
 export const authRegister = (data) => async (dispatch) => {
+  // console.log("data:", data);
   try {
     dispatch({ type: AUTH_REGISTER_REQUEST });
 
     const res = await axios.post(
-      "https://shopaholic.onrender.com/user/register",
-      data
+      "https://trendy-vibes-backend-production.up.railway.app/user/register",
+      {
+        email: data.email,
+        username: data.name,
+        password: data.password,
+      }
     );
-    // console.log('res: ', res);
+    // console.log("res: ", res);
 
     dispatch({
       type: AUTH_REGISTER_SUCCESS,
       payload: {
-        message: res.data.message,
+        message: res.data.response,
       },
     });
   } catch (error) {
     dispatch({
       type: AUTH_REGISTER_FAILURE,
       payload: {
-        message: error.response.data.message,
+        message: error.response.data.response,
       },
     });
   }
 };
 
 export const authLogin = (data) => async (dispatch) => {
-  //   console.log("data: ", data);
+  // console.log("data: ", data);
   try {
     dispatch({ type: AUTH_LOGIN_REQUEST });
 
@@ -44,13 +49,14 @@ export const authLogin = (data) => async (dispatch) => {
       "https://trendy-vibes-backend-production.up.railway.app/user/login",
       data
     );
-     console.log("res: ", res);
+    // console.log("res: ", res);
+    localStorage.setItem("user_name", res.data.userName);
 
     dispatch({
       type: AUTH_LOGIN_SUCCESS,
       payload: {
         token: res.data.token,
-        message: res.data.message,
+        message: res.data.token,
         user: res.data.user,
       },
     });
@@ -60,7 +66,7 @@ export const authLogin = (data) => async (dispatch) => {
     dispatch({
       type: AUTH_LOGIN_FAILURE,
       payload: {
-        message: error.response.data.message,
+        message: error.response.data.response,
       },
     });
   }

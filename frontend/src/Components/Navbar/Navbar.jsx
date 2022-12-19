@@ -41,11 +41,12 @@ const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
-  console.log("token:", token);
+  // console.log("token:", token);
   if (token) {
     const user_information = jwt_decode(token, "secret");
     localStorage.setItem("user_info", JSON.stringify(user_information));
   }
+  const local_storage_name = localStorage.getItem("user_name");
 
   let user_name = localStorage.getItem("user_info");
   user_name = JSON.parse(user_name);
@@ -54,6 +55,13 @@ const Navbar = () => {
     localStorage.removeItem("token");
     alert("LogOut Successfully 😊✔");
   };
+
+  // console.log(
+  //   jwt_decode(
+  //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2M2EwNjkwMjU1NDQ4OGUwM2YxZWJiZmIiLCJpYXQiOjE2NzE0NTcwMzJ9.QhEp_18cz8amr-dldIivtA-JBr8cURM0hloj508lqqs",
+  //     "secret"
+  //   )
+  // );
 
   // const store = useSelector((store) => console.log(store));
 
@@ -184,21 +192,21 @@ const Navbar = () => {
             }`}
           >
             {token && (
-              <div>
-                <Link to={"/userinfo"}>{user_name?.name}</Link>
+              <div onClick={() => setIsOpenUserOption(false)}>
+                <Link to={"/userinfo"}>{local_storage_name}</Link>
               </div>
             )}
             {!token && (
-              <div>
+              <div onClick={() => setIsOpenUserOption(false)}>
                 <Link to={"/login"}>User LogIn</Link>
               </div>
             )}
             {!token && (
-              <div>
+              <div onClick={() => setIsOpenUserOption(false)}>
                 <Link to={"/signup"}>User SignUp</Link>
               </div>
             )}
-            <div>
+            <div onClick={() => setIsOpenUserOption(false)}>
               <a
                 href="https://trendy-vibes-backend-production.up.railway.app/admin/login"
                 target={"_blank"}
@@ -207,7 +215,12 @@ const Navbar = () => {
               </a>
             </div>
             {token && (
-              <div onClick={handleUserLogOut}>
+              <div
+                onClick={() => {
+                  handleUserLogOut();
+                  setIsOpenUserOption(false);
+                }}
+              >
                 <Link to="#">LogOut</Link>
               </div>
             )}

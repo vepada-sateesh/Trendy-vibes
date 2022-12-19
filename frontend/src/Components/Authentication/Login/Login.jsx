@@ -36,7 +36,6 @@ function Login() {
   const navigate = useNavigate();
   const [formData, setFormData] = React.useState(initialState);
   const authState = useSelector((state) => state.auth);
-  // console.log("authState: ", authState);
   const dispatch = useDispatch();
 
   // // -------- google login------
@@ -68,20 +67,35 @@ function Login() {
       });
     }
   };
-
   React.useEffect(() => {
     onOpen();
-    if (authState.userLogin.message === "User does not exist") {
-      toast({
-        title: authState.message,
-        title: "Please fill correct detail",
-        status: "error",
-        duration: 2000,
-        isClosable: true,
-        position: "top",
-      });
-    }
-    if (authState.userLogin.message === "Password is incorrect") {
+    try {
+      if (authState.userLogin.message === "please signup first") {
+        toast({
+          title: authState.message,
+          title: "Please fill correct detail",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+      } else if (
+        authState.userLogin.message !== "please signup first" &&
+        authState.userLogin.message
+      ) {
+        toast({
+          title: "Login Successfully",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+        dispatch({ type: AUTH_LOGIN_RESET });
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+      }
+    } catch {
       toast({
         title: authState.message,
         title: "Please fill correct detail",
@@ -91,20 +105,7 @@ function Login() {
         position: "top",
       });
     }
-    if (authState.userLogin.message === "Login successful") {
-      toast({
-        title: "Login Successfully",
-        status: "success",
-        duration: 2000,
-        isClosable: true,
-        position: "top",
-      });
-      dispatch({ type: AUTH_LOGIN_RESET });
-      setTimeout(() => {
-        navigate("/");
-      }, 2000);
-    }
-  }, [dispatch, onOpen, navigate, authState, toast]);
+  }, [authState]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -114,16 +115,16 @@ function Login() {
     setLoading(true);
     // console.log(formData);
     dispatch(authLogin(formData));
-    navigate("/")
+    // navigate("/");
   };
-  console.log(loading);
+  // console.log(loading);
   return (
     <ChakraProvider>
-      <Modal isOpen={isOpen} onClose={onClose} size={{ base: "sm", md: "lg" }}>
+      <Modal isOpen={true} onClose={onClose} size={{ base: "sm", md: "lg" }}>
         <ModalOverlay
-          onClick={() => {
-            navigate("/");
-          }}
+        // onClick={() => {
+        //   navigate("/");
+        // }}
         />
         <ModalContent w="350px">
           <ModalHeader
@@ -168,7 +169,7 @@ function Login() {
             w="86%"
             ml="25px"
             onClick={() => {
-              onClose();
+              // onClose();
               navigate("/");
             }}
           >
