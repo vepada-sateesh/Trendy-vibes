@@ -90,7 +90,7 @@ useEffect(() => {
     //     }
     // ]
     //var arr =[1,2,3]
-    var total = arr.reduce((a,c)=>a+Number(c.price),0)
+    var total = arr.reduce((a,c)=>a+Number(c.Price),0)
     console.log(total)
     
   return (

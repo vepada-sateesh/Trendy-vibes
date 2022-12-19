@@ -80,8 +80,9 @@ const Cart = () => {
     //     }
     // ]
     //var arr =[1,2,3]
-    var total = arr.reduce((a,c)=>a+Number(c.price),0)
-    // console.log(total)
+    console.log(arr,"arr")
+    var total = arr.reduce((a,c)=>a+Number(c.Price),0)
+     console.log(total)
     const getData = (token) => {
         return axios({
             method: 'get',
