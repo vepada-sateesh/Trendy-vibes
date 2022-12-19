@@ -16,17 +16,21 @@ import {
   } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useToast } from '@chakra-ui/react'
-
+import axios from "axios";
 import { Flex,  HStack, Image, StackDivider, VStack } from "@chakra-ui/react";
 
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 
 const Cart = () => {
+    const token = useSelector((store) => store.auth.data.token)
+    console.log(token)
     const toast = useToast()
     var disc = localStorage.getItem("discount") || 0
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [Promo, setPromo] = React.useState("")
+    const [arr,setArr] = React.useState([])
 
     const handleApply = () => {
         if (Promo === "PR500") {
@@ -51,34 +55,49 @@ const Cart = () => {
     
     };
     
-     const arr = [
-        {
-            brandname: "U.S. Polo Assn. Denim Co.",
-            productname: "METALLIC LOGO POLO SHIRT",
-            color: "Black",
-            size: "XL",
-            img_url: "https://cdn14.nnnow.com/web-images/thumbnail/styles/IUB43TOYANB/1663150197304/1.jpg",
-            mrp: " 1,799",
-            price: "1439",
-            discount:"(20% Off)"
+    //  const arr = [
+    //     {
+    //         brandname: "U.S. Polo Assn. Denim Co.",
+    //         productname: "METALLIC LOGO POLO SHIRT",
+    //         color: "Black",
+    //         size: "XL",
+    //         img_url: "https://cdn14.nnnow.com/web-images/thumbnail/styles/IUB43TOYANB/1663150197304/1.jpg",
+    //         mrp: " 1,799",
+    //         price: "1439",
+    //         discount:"(20% Off)"
 
-        },
-        {
-            brandname: "U.S. Polo Assn. Denim Co.",
-            productname: "METALLIC LOGO POLO SHIRT",
-            color: "Black",
-            size: "XL",
-            img_url: "https://cdn14.nnnow.com/web-images/thumbnail/styles/IUB43TOYANB/1663150197304/1.jpg",
-            mrp: " 1,799",
-            price: "1439",
-            discount:"(20% Off)"
+    //     },
+    //     {
+    //         brandname: "U.S. Polo Assn. Denim Co.",
+    //         productname: "METALLIC LOGO POLO SHIRT",
+    //         color: "Black",
+    //         size: "XL",
+    //         img_url: "https://cdn14.nnnow.com/web-images/thumbnail/styles/IUB43TOYANB/1663150197304/1.jpg",
+    //         mrp: " 1,799",
+    //         price: "1439",
+    //         discount:"(20% Off)"
 
-        }
-    ]
+    //     }
+    // ]
     //var arr =[1,2,3]
-    var total = arr.reduce((a,c)=>a+Number(c.price),0)
-    console.log(total)
-    
+    // var total = arr.reduce((a,c)=>a+Number(c.price),0)
+    // console.log(total)
+    const getData = (token) => {
+        return axios({
+            method: 'get',
+            url: 'https://trendy-vibes-backend-production.up.railway.app/cart',
+            headers: { 'Authorization': `Bearer ${token}` },
+          })
+    }
+    useEffect(() => {
+        getData(token).then(res => {
+            setArr(res.data.data)
+        }).catch(err => {
+            console.log(err.message);
+        })
+    },[])
+    console.log(arr)
+    var total = 50;
   return (
     <div>
       <Box
@@ -119,14 +138,14 @@ const Cart = () => {
                               <Box key={i} mt="20px">
                                   <Box borderBottom="2px solid black"></Box>
                                   <Flex >
-                                        <Box width={["20%","20%","20%","15%","15%"]}><Image w={"100px"} h={"125px"} src={item.img_url}></Image></Box>
+                                        <Box width={["20%","20%","20%","15%","15%"]}><Image w={"100px"} h={"125px"} src={item.img}></Image></Box>
                                         <Box width={"85%"}>
                                             <HStack textAlign={"left"} fontSize={"12px"} width={"100%"}  justifyContent={"space-between"} flexDirection={["column", "column", "column", "row", "row"]}>
                                                     <Box color={"black"} lineHeight={"25px"}>
-                                                        <p>{item.brandname}</p>
-                                                        <Text fontWeight={"bold"}>{item.productname}</Text>
-                                                        <p>Color - {item.color}</p>
-                                                        <p>Size - {item.size}</p>
+                                                        <p>{item.brand}</p>
+                                                        <Text fontWeight={"bold"}>{item.description}</Text>
+                                                        <p>Color - {"black"}</p>
+                                                        <p>Size - {"xxl"}</p>
                                                         <a href="#"><Text as="u">Move To Favorites</Text></a> <a href="#"><Text as="u">Remove</Text></a>
                                                     </Box>
                                                     <Box color={"black"} lineHeight={"25px"}>
@@ -139,9 +158,9 @@ const Cart = () => {
                                                     </Box>
                                               <Box width={"50%"} color={"black"} lineHeight={"25px"}>
                                                   <HStack justify={"space-evenly"}>
-                                                      <Box><span><Text mr={"5px"} as="del">Rs.{item.mrp}</Text></span></Box>
-                                                      <Box><span><Text mr={"5px"} fontWeight={"bold"} >Rs.{item.price }</Text></span></Box>
-                                                      <Box><span><Text mr={"5px"} as='b' color={"#EA0020"}>{`(${item.discount})`}</Text></span></Box>
+                                                      <Box><span><Text mr={"5px"} as="del">Rs.{item.Price*2}</Text></span></Box>
+                                                      <Box><span><Text mr={"5px"} fontWeight={"bold"} >Rs.{item.Price }</Text></span></Box>
+                                                      <Box><span><Text mr={"5px"} as='b' color={"#EA0020"}>{`${"(20%off)"}`}</Text></span></Box>
                                                   </HStack>
                                                     </Box>
                                                 </HStack>
@@ -267,8 +286,8 @@ const Cart = () => {
                     </Box>
                     </VStack>
                   </Box>
-                  {/* <Button width={"100%"}>CHECKOUT</Button> */}
-                  <Box mt={"20px"} width={"100%"} h={"30px"} bg={"#f39"} fontWeight={"bold"} pt={"10px"} pb={"30px"}><Link to={"/#"}>CHECKOUT</Link></Box>
+                 
+                  <Box mt={"30px"}  width={"100%"} h={"50px"} bg={"#f39"} fontWeight={"bold"} pt={"10px"} pb={"30px"}><Link to="/payment"><Button bg={"#f39"} as="b" pb={"15px"}>CHECKOUT</Button></Link></Box>
                   <Box border={"2px solid green"} mt={"20px"} width={"100%"} h={"30px"}   fontWeight={"bold"} pt={"10px"} pb={"30px"}><Link to={"/#"}><Box  color={"black"}>SHOP MORE</Box></Link></Box>
                   <Image mt={"20px"} src={"https://static.nnnow.com/mybag_offer_banner.jpg"} alt={"banner"}></Image>
 
