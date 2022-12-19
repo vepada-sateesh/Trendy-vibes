@@ -267,8 +267,8 @@ const Cart = () => {
                     </Box>
                     </VStack>
                   </Box>
-                  {/* <Button width={"100%"}>CHECKOUT</Button> */}
-                  <Box mt={"20px"} width={"100%"} h={"30px"} bg={"#f39"} fontWeight={"bold"} pt={"10px"} pb={"30px"}><Link to={"/#"}>CHECKOUT</Link></Box>
+                 
+                  <Box mt={"30px"}  width={"100%"} h={"50px"} bg={"#f39"} fontWeight={"bold"} pt={"10px"} pb={"30px"}><Link to="/payment"><Button bg={"#f39"} as="b" pb={"15px"}>CHECKOUT</Button></Link></Box>
                   <Box border={"2px solid green"} mt={"20px"} width={"100%"} h={"30px"}   fontWeight={"bold"} pt={"10px"} pb={"30px"}><Link to={"/#"}><Box  color={"black"}>SHOP MORE</Box></Link></Box>
                   <Image mt={"20px"} src={"https://static.nnnow.com/mybag_offer_banner.jpg"} alt={"banner"}></Image>
 

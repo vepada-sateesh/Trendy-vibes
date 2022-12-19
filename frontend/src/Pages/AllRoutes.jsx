@@ -33,9 +33,20 @@ const AllRoutes = () => {
         }
       />
       <Route path="/mens" element={<Products />} />
-      <Route path="/cart" element={<Cart />} />
+      <Route path="/cart" element={
+        <ChakraProvider>
+        <Cart />
+      </ChakraProvider>
+        
+      } />
       <Route path="/userinfo" element={<UserInfo />} />
       <Route path="/ProductDetails" element={<ProductDetails />} />
+      <Route path="/payment" element={
+        <ChakraProvider>
+        <Payment />
+      </ChakraProvider>
+        
+      } />
     </Routes>
   );
 };
