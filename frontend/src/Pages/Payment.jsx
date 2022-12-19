@@ -16,9 +16,13 @@ import {
   IconButton,
   useColorMode,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import {React} from "react"
 
 const Payment = () => {
+  const token = useSelector((store) => store.auth.data.token)
   const [name, setName] = useState("")
   const [address, setAddress] = useState("")
   const [phone, setPhone] = useState("")
@@ -27,7 +31,8 @@ const Payment = () => {
   const [landMark, setLandMark] = useState("")
   const [finalAddress, setFinalAddress] = useState(null)
   const navigate = useNavigate()
-  
+  const [arr,setArr] = useState([])
+
   const { isOpen, onOpen, onClose } = useDisclosure();
     const toast = useToast()
     var disc = localStorage.getItem("discount") || 0
@@ -46,31 +51,44 @@ const Payment = () => {
       
   }
   console.log(finalAddress)
-    
-     const arr = [
-        {
-            brandname: "U.S. Polo Assn. Denim Co.",
-            productname: "METALLIC LOGO POLO SHIRT",
-            color: "Black",
-            size: "XL",
-            img_url: "https://cdn14.nnnow.com/web-images/thumbnail/styles/IUB43TOYANB/1663150197304/1.jpg",
-            mrp: " 1,799",
-            price: "1439",
-            discount:"(20% Off)"
+  const getData = (token) => {
+    return axios({
+        method: 'get',
+        url: 'https://trendy-vibes-backend-production.up.railway.app/cart',
+        headers: { 'Authorization': `Bearer ${token}` },
+      })
+}
+useEffect(() => {
+  getData(token).then(res => {
+      setArr(res.data.data)
+  }).catch(err => {
+      console.log(err.message);
+  })
+},[])
+    //  const arr = [
+    //     {
+    //         brandname: "U.S. Polo Assn. Denim Co.",
+    //         productname: "METALLIC LOGO POLO SHIRT",
+    //         color: "Black",
+    //         size: "XL",
+    //         img_url: "https://cdn14.nnnow.com/web-images/thumbnail/styles/IUB43TOYANB/1663150197304/1.jpg",
+    //         mrp: " 1,799",
+    //         price: "1439",
+    //         discount:"(20% Off)"
 
-        },
-        {
-            brandname: "U.S. Polo Assn. Denim Co.",
-            productname: "METALLIC LOGO POLO SHIRT",
-            color: "Black",
-            size: "XL",
-            img_url: "https://cdn14.nnnow.com/web-images/thumbnail/styles/IUB43TOYANB/1663150197304/1.jpg",
-            mrp: " 1,799",
-            price: "1439",
-            discount:"(20% Off)"
+    //     },
+    //     {
+    //         brandname: "U.S. Polo Assn. Denim Co.",
+    //         productname: "METALLIC LOGO POLO SHIRT",
+    //         color: "Black",
+    //         size: "XL",
+    //         img_url: "https://cdn14.nnnow.com/web-images/thumbnail/styles/IUB43TOYANB/1663150197304/1.jpg",
+    //         mrp: " 1,799",
+    //         price: "1439",
+    //         discount:"(20% Off)"
 
-        }
-    ]
+    //     }
+    // ]
     //var arr =[1,2,3]
     var total = arr.reduce((a,c)=>a+Number(c.price),0)
     console.log(total)
