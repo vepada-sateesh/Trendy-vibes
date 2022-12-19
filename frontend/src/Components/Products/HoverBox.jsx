@@ -1,9 +1,42 @@
 import { Image, Text, Flex, Box } from "@chakra-ui/react"
 import { useState } from "react"
 import { BsHeart, BsHandbag } from 'react-icons/bs';
+import axios from "axios";
+
+import { useSelector } from "react-redux";
 
 
-function HoverBox({el}){
+function HoverBox({ el }) {
+    const token = useSelector((store) => store.auth.data.token)
+    console.log(token)
+    const handleAddCart = () => {
+        console.log(el)
+
+                const obj = {
+                        
+            productName: el.description,
+            img: el.frontimgsrc,
+            category: el.identifier,
+            description:el.description,
+            brand: el.brand,
+            type: el.identifier,
+            Price: el.price,
+            quantity:1,
+        }
+        axios({
+            method: 'post',
+            url: 'https://trendy-vibes-backend-production.up.railway.app/cart/add',
+            data: obj,
+            headers: { 'Authorization': `Bearer ${token}` },
+          }).then(res => {
+                console.log(res,"sent");
+            }).catch(err => {
+              console.log(err.message)
+            })
+        }
+        
+
+    
     return(<>
     
     
@@ -23,7 +56,7 @@ function HoverBox({el}){
                             </Box>
                             
                             {/* ShopNow button */}
-                            <Box align="center"><BsHandbag size={"30px"} color="white" />
+                            <Box onClick={handleAddCart} align="center"><BsHandbag size={"30px"} color="white" />
                             <Text fontSize='xs'>SHOP NNNOW</Text>
                             
                             </Box>

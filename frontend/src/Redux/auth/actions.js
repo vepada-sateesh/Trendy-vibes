@@ -41,10 +41,10 @@ export const authLogin = (data) => async (dispatch) => {
     dispatch({ type: AUTH_LOGIN_REQUEST });
 
     const res = await axios.post(
-      "https://shopaholic.onrender.com/user/login",
+      "https://trendy-vibes-backend-production.up.railway.app/user/login",
       data
     );
-    // console.log("res: ", res);
+     console.log("res: ", res);
 
     dispatch({
       type: AUTH_LOGIN_SUCCESS,

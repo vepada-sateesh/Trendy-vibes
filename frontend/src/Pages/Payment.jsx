@@ -1,6 +1,6 @@
 import { Box, Checkbox, Flex, Heading, HStack, Image, Input, InputRightElement, StackDivider, Text, VStack } from "@chakra-ui/react";
 
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { InfoIcon, CalendarIcon } from '@chakra-ui/icons'
 import { useToast } from '@chakra-ui/react'
 import {
@@ -25,7 +25,8 @@ const Payment = () => {
   const [pincode, setPincode] = useState("")
   const [altPhone, setAltPhone] = useState("")
   const [landMark, setLandMark] = useState("")
-  const [finalAddress,setFinalAddress] = useState(null)
+  const [finalAddress, setFinalAddress] = useState(null)
+  const navigate = useNavigate()
   
   const { isOpen, onOpen, onClose } = useDisclosure();
     const toast = useToast()
@@ -314,6 +315,7 @@ const Payment = () => {
                 duration: 9000,
                 isClosable: true,
               })
+              navigate("/")
         }
       }>PLACE ORDER</Link></Box>
                     {/* <Box border={"2px solid green"} mt={"20px"} width={"100%"} h={"30px"}   fontWeight={"bold"} pt={"10px"} pb={"30px"}><Link to={"/#"}><Box  color={"black"}>SHOP MORE</Box></Link></Box> */}
