@@ -114,6 +114,7 @@ function Login() {
     setLoading(true);
     // console.log(formData);
     dispatch(authLogin(formData));
+    navigate("/")
   };
   console.log(loading);
   return (
