@@ -1,4 +1,5 @@
 import { Box, Button, Center, Flex, Image, Input, Link, Spacer, Text, Wrap, WrapItem } from "@chakra-ui/react"
+import axios from "axios";
 import { BsHeart, BsShareFill } from 'react-icons/bs';
 import { useSelector } from "react-redux";
 import {Routes, Route, useNavigate} from 'react-router-dom';
@@ -7,9 +8,33 @@ function Details() {
 
     const navigate = useNavigate();
     const singleProductDetails = useSelector((store)=>store.ProductReducer.singleProductDetails)
-
+    const token = useSelector((store) => store.auth.data.token)
+console.log(singleProductDetails)
    function handelAddToBag(){
-      navigate('/Products');
+
+                const obj = {
+                        
+            productName: singleProductDetails.description,
+            img: singleProductDetails.frontimgsrc,
+            category: singleProductDetails.identifier,
+            description:singleProductDetails.description,
+            brand: singleProductDetails.brand,
+            type: singleProductDetails.identifier,
+            Price: singleProductDetails.price,
+            quantity:1,
+        }
+        axios({
+            method: 'post',
+            url: 'https://trendy-vibes-backend-production.up.railway.app/cart/add',
+            data: obj,
+            headers: { 'Authorization': `Bearer ${token}` },
+          }).then(res => {
+                console.log(res,"sent");
+            }).catch(err => {
+              console.log(err.message)
+            })
+
+      navigate('/cart');
    }
 
     return (
@@ -19,21 +44,21 @@ function Details() {
                 {/* offer tag */}
                 <Flex w="fit-content" mt="10px" >
                     {/* offer logo */}
-                    <Image src={"https://cdn02.nnnow.com/web-images/master/product_tags/cb6e9f96-922e-42cb-84ae-9337178f87fa/1554297283453/Sale.png"} h="20px" w="20px" />
+                    <Image src="https://cdn02.nnnow.com/web-images/master/product_tags/cb6e9f96-922e-42cb-84ae-9337178f87fa/1554297283453/Sale.png" h="20px" w="20px" />
                     <Text as="b" fontSize='sm' > OFFER </Text>
                 </Flex>
 
                 {/* brand name */}
-                <Text as="b" fontSize='md' > FLYING MACHINE </Text>
+                <Text as="b" fontSize='md' > {singleProductDetails.brand} </Text>
 
                 {/* description */}
-                <Text fontSize='md' > Men Dark Blue Michael Slim Tapered Fit Whiskered Jeans </Text>
+                <Text fontSize='md' > {singleProductDetails.description} </Text>
 
                 {/* old price, current price, total discount */}
                 <Flex gap={"5px"} w="fit-content" >
-                    <Text as="s" fontSize='sm'> Rs. 2,499 </Text>
-                    <Text as="b" fontSize='sm'> Rs. 5,499 </Text>
-                    <Text as="b" fontSize='sm' color="#ea0020"> (45% Off) </Text>
+                    <Text as="s" fontSize='sm'> Rs. {parseInt(singleProductDetails.price/2)} </Text>
+                    <Text as="b" fontSize='sm'> Rs. {singleProductDetails.price} </Text>
+                    <Text as="b" fontSize='sm' color="#ea0020"> ({singleProductDetails.discount}% Off) </Text>
 
                     <Text fontSize='sm' color="grey"> T&C </Text>
                 </Flex>
@@ -56,8 +81,11 @@ function Details() {
                     <Text fontSize={"xs"} ml="10" mb="3" color="#ff3399">SIZE CHART </Text>
                 </Flex>
                 {/* available size button */}
-                <Flex>
-                    <Button bg="transparent" border={"2px"} borderColor="grey" borderRadius="none" size='sm' _hover={{ borderColor: "black" }} >1</Button>
+                <Flex gap={"2"}>
+                    <Button bg="transparent" border={"2px"} borderColor="grey" borderRadius="none" size='sm' _hover={{ borderColor: "black" }} >S</Button>
+                    <Button bg="transparent" border={"2px"} borderColor="grey" borderRadius="none" size='sm' _hover={{ borderColor: "black" }} >M</Button>
+                    <Button bg="transparent" border={"2px"} borderColor="grey" borderRadius="none" size='sm' _hover={{ borderColor: "black" }} >L</Button>
+                    <Button bg="transparent" border={"2px"} borderColor="grey" borderRadius="none" size='sm' _hover={{ borderColor: "black" }} >XL</Button>
                 </Flex>
 
                 {/* available color */}
