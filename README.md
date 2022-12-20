@@ -32,55 +32,55 @@ All the images, icons, and links have taken from the original website ( https://
 
 ## Landing Page
 
-![LandingPage](static/screenshot/home1.png)
+![LandingPage](/diligent-pies-1359/frontend/static/screenshot/home1.png)
 
 This is the landing page of our website. You can see and choose all latest and trending top products from here.
 
 ## SignUp Page
 
-![SignUpPage](static/screenshot/signup.png)
+![SignUpPage](/diligent-pies-1359/frontend/static/screenshot/signup.png)
 
 You can signup with our website from here .
 
 ## Login Page
 
-![LoginPage](static/screenshot/login.png)
+![LoginPage](/diligent-pies-1359/frontend/static/screenshot/login.png)
 
 You can login to our website from here by entering required details.
 
 ## Navigation Bar
 
-![NavBar](static/screenshot/navbar.png)
+![NavBar](/diligent-pies-1359/frontend/static/screenshot/navbar.png)
 
 Here, you can choose a category of products whatever you want.
 
 ## Products Page
 
-![ProductsPage](static/screenshot/product.png)
+![ProductsPage](/diligent-pies-1359/frontend/static/screenshot/product.png)
 
 Here, you can see all the products and whenever you hover on any product you will see ADD TO CART option, bu clicking the button you can add the products to cart.
 
 ## Cart Page
 
-![CartPage](static/screenshot/cart.png)
+![CartPage](/diligent-pies-1359/frontend/static/screenshot/cart.png)
 
 Here, you can see all of your products which are added into cart, you can avail the discount by applyling the promocode in respective field and you can remove any product from here also.
 
 ## Address Page
 
-![AddressPage](static/screenshot/address.png)
+![AddressPage](/diligent-pies-1359/frontend/static/screenshot/address.png)
 
 In this page you can add your address to where your product should be delivered.
 
 ## Payment Page
 
-![PaymentPage](static/screenshot/payment.png)
+![PaymentPage](/diligent-pies-1359/frontend/static/screenshot/payment.png)
 
 You can see lot of payment options here and you can choose any one of them to pay for your product.
 
 ## Summary Page
 
-![ThankyouPage](static/images/SummaryPage.png)
+![ThankyouPage](/diligent-pies-1359/frontend/static/images/SummaryPage.png)
 
 Finally, Here you can see your order details and summary and by clicking continue you will be redirected to home page and you can continue the shopping.
 
