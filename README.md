@@ -80,14 +80,13 @@ You can see lot of payment options here and you can choose any one of them to pa
 
 ## Summary Page
 
-![ThankyouPage](/diligent-pies-1359/frontend/static/images/SummaryPage.png)
+![ThankyouPage](/diligent-pies-1359/frontend/static/images/home2.png)
 
 Finally, Here you can see your order details and summary and by clicking continue you will be redirected to home page and you can continue the shopping.
 
 # Limitations
 
-Home page is fully responsive but remaining pages are not responsive yet , those pages are might not be properly visible on small screen devices.
-
+This Website is fully responsive .
 # End Notes
 
 In this project we have tried to a perfect clone of the original website as much as possible with very limited knowledge of front-end & back-end.
