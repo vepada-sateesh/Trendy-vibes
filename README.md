@@ -1,6 +1,6 @@
-﻿![imagelink](https://cdn02.nnnow.com/web-images/master/navtree_metaData/59b2425ae4b0d70964ee66e0/1505806763887/12NNNOWLOGODESKTOP.png)
+﻿![imagelink](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJjMjaNTcVqLQvmnSnYb_7y4Wpkg1Lak_ad2TBoV-Siw&s)
 
-# NNNOW - Clone
+# TRENDY VIBES - Clone
 
 ## Project : Clone of https://www.nnnow.com/
 
