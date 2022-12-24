@@ -32,61 +32,73 @@ All the images, icons, and links have taken from the original website ( https://
 
 ## Landing Page
 
-![LandingPage](/diligent-pies-1359/frontend/static/screenshot/home1.png)
-
+![LandingPage](static/screenshot/home1.png)
+![LandingPage](static/screenshot/home2.png)
+![LandingPage](static/screenshot/home3.png)
 This is the landing page of our website. You can see and choose all latest and trending top products from here.
 
 ## SignUp Page
 
-![SignUpPage](/diligent-pies-1359/frontend/static/screenshot/signup.png)
+![SignUpPage](static/screenshot/signup.png)
 
 You can signup with our website from here .
 
 ## Login Page
 
-![LoginPage](/diligent-pies-1359/frontend/static/screenshot/login.png)
+![LoginPage](static/screenshot/login.png)
 
 You can login to our website from here by entering required details.
 
 ## Navigation Bar
 
-![NavBar](/diligent-pies-1359/frontend/static/screenshot/navbar.png)
+![NavBar](static/screenshot/navbar.png)
 
 Here, you can choose a category of products whatever you want.
 
 ## Products Page
 
-![ProductsPage](/diligent-pies-1359/frontend/static/screenshot/product.png)
+![ProductsPage](static/screenshot/product.png)
 
 Here, you can see all the products and whenever you hover on any product you will see ADD TO CART option, bu clicking the button you can add the products to cart.
 
 ## Cart Page
 
-![CartPage](/diligent-pies-1359/frontend/static/screenshot/cart.png)
+![CartPage](static/screenshot/cart.png)
 
 Here, you can see all of your products which are added into cart, you can avail the discount by applyling the promocode in respective field and you can remove any product from here also.
 
 ## Address Page
 
-![AddressPage](/diligent-pies-1359/frontend/static/screenshot/address.png)
+![AddressPage](static/screenshot/address.png)
 
 In this page you can add your address to where your product should be delivered.
 
 ## Payment Page
 
-![PaymentPage](/diligent-pies-1359/frontend/static/screenshot/payment.png)
-
+![PaymentPage](static/screenshot/payment.png)
 You can see lot of payment options here and you can choose any one of them to pay for your product.
 
 ## Summary Page
 
-![ThankyouPage](/diligent-pies-1359/frontend/static/images/home2.png)
-
+![PaymentPage](static/screenshot/payment.png)
 Finally, Here you can see your order details and summary and by clicking continue you will be redirected to home page and you can continue the shopping.
+
+## Admin Login
+
+![AdminLogin](static/screenshot/admin_login.png)
+
+## Admin Dashboard
+
+![Admin Dashboar](static/screenshot/admin_dashboard.png)
+
+## Admin User
+
+![AdminUser](static/screenshot/admin_user.png)
 
 # Limitations
 
 This Website is fully responsive .
+
 # End Notes
 
 In this project we have tried to a perfect clone of the original website as much as possible with very limited knowledge of front-end & back-end.

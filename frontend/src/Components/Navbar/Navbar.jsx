@@ -50,23 +50,13 @@ const Navbar = () => {
 
   let user_name = localStorage.getItem("user_info");
   user_name = JSON.parse(user_name);
+  
   const handleUserLogOut = () => {
     localStorage.removeItem("user_info");
     localStorage.removeItem("token");
     alert("LogOut Successfully 😊✔");
   };
 
-  // console.log(
-  //   jwt_decode(
-  //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2M2EwNjkwMjU1NDQ4OGUwM2YxZWJiZmIiLCJpYXQiOjE2NzE0NTcwMzJ9.QhEp_18cz8amr-dldIivtA-JBr8cURM0hloj508lqqs",
-  //     "secret"
-  //   )
-  // );
-
-  // const store = useSelector((store) => console.log(store));
-
-  // console.log("searchProducts:", searchProducts);
-  // console.log("searchProducts:", searchProducts.length);
   const handleRedirect = (params) => {
     dispatch(setSingleProductDetails(params));
     setSearchProducts([]);
@@ -93,13 +83,12 @@ const Navbar = () => {
     function handleWindowResize(e) {
       setWindowSize(getWindowSize());
     }
-
     window.addEventListener("resize", handleWindowResize);
-
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
+
   return (
     <>
       <div className="upper_nav">
